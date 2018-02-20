@@ -14,7 +14,7 @@ class Settings {
     
     static let cardEdge: CGFloat = 60.0
     static let interItemInset: CGFloat = 10.0
-    static let stage = 6
+    static let stage = 4
     
     static let ElementsPerRowAndColumn = [
         [4, 2, 2],

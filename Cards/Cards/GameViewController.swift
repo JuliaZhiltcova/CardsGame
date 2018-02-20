@@ -14,10 +14,14 @@ class GameViewController: UIViewController {
     
     @IBAction func hintButton(_ sender: UIButton) {
     
-        for (index, _) in game.cards.enumerated() {
+        for (index, card) in game.cards.enumerated() where card.isFaceUp == false {
             let cell = cardsCollectionView.cellForItem(at: [0, index]) as! CardViewCell
             cell.flipOver()
         }
+    }
+    
+    @IBAction func menuButton(_ sender: UIButton) {
+
     }
     
     let reuseIdentifier = "cardCell"
@@ -59,17 +63,17 @@ class GameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.landscapeRight
-    }
-    
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
-        return UIInterfaceOrientation.landscapeRight
-    }
+//    override var shouldAutorotate: Bool {
+//        return true
+//    }
+//    
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        return UIInterfaceOrientationMask.landscapeRight
+//    }
+//    
+//    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+//        return UIInterfaceOrientation.landscapeRight
+//    }
     
     func cardForIndexPath(indexPath: IndexPath) -> Card {
         //return cards[(indexPath as NSIndexPath).section].[(indexPath as IndexPath).row]
@@ -119,7 +123,7 @@ extension GameViewController: UICollectionViewDelegate{
 
 extension GameViewController: CardsGame {
     
-    func flipToFace(_ cardIndices: [Int]){
+ /*   func flipToFace(_ cardIndices: [Int]){
         for item in cardIndices {
             let indexPath = IndexPath(row: item, section: 0)
             let cell = cellForIndexPath(indexPath: indexPath)
@@ -132,6 +136,15 @@ extension GameViewController: CardsGame {
             let indexPath = IndexPath(row: item, section: 0)
             let cell = cellForIndexPath(indexPath: indexPath)
             cell.flipCard(flipToFace: false)
+        }
+    }
+   */
+    
+    func flip(_ cardIndices: [Int], toFace direction: Bool){
+        for item in cardIndices {
+            let indexPath = IndexPath(row: item, section: 0)
+            let cell = cellForIndexPath(indexPath: indexPath)
+            cell.flipCard(flipToFace: direction)
         }
     }
 }
@@ -185,3 +198,4 @@ extension GameViewController: CardsGame {
 //     
 //    }
 //}
+

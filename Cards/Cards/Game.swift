@@ -9,8 +9,9 @@
 import Foundation
 
 protocol CardsGame{
-    func flipToFace(_ cardIndices: [Int])
-    func flipToBack(_ cardIndices: [Int])
+    //func flipToFace(_ cardIndices: [Int])
+    //func flipToBack(_ cardIndices: [Int])
+    func flip(_ cardIndices: [Int], toFace direction: Bool)
 }
 
 class Game{
@@ -27,11 +28,6 @@ class Game{
             cards.append(item.copy() as! Card)
         }
         
-        
-       // cards.forEach { card in
-       //     print(Unmanaged<AnyObject>.passUnretained(card as AnyObject).toOpaque())
-       // }
-        
         return cards.shuffled()
     }
     
@@ -47,22 +43,23 @@ class Game{
     func didSelectCard(_ card: Card){
         
         
-        if card.isFaceUp { return }                                         //card is already opened
+        if card.isFaceUp { return }
         
-        flipToFace([card])
+        //flipToFace([card])
+        flip([card], toFace: true)
         
-        
-        if !cardsOpened.isEmpty {                                                            // в cardsOpened есть первая карточка
+        if !cardsOpened.isEmpty {
             
-            if card.id == cardsOpened[0].id {                               //карточки совпали
+            if card.id == cardsOpened[0].id {
                 cards[indexByCard(card)].isFaceUp = true
                 cardsOpened.removeAll()
-            } else {                                                        //карточки не совпали
+            } else {
                 cards[indexByCard(cardsOpened[0])].isFaceUp = false
                 cardsOpened.append(card)
                 var cardsOpened1 = cardsOpened
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                    self.flipToBack(cardsOpened1)
+                   // self.flipToBack(cardsOpened1)
+                    self.flip(cardsOpened1, toFace: false)
                     cardsOpened1.removeAll()
                 }
                 cardsOpened.removeAll()
@@ -75,13 +72,21 @@ class Game{
         
     }
     
-    func flipToFace(_ cards: [Card]){
+    func flip(_ cards: [Card], toFace: Bool){
         var cardIndices = [Int]()
         for item in cards {
             let index = indexByCard(item)
             cardIndices.append(index)
         }
-        print("Card indices \(cardIndices)")
+        delegate?.flip(cardIndices, toFace: toFace)
+    }
+    
+   /* func flipToFace(_ cards: [Card]){
+        var cardIndices = [Int]()
+        for item in cards {
+            let index = indexByCard(item)
+            cardIndices.append(index)
+        }
         delegate?.flipToFace(cardIndices)
     }
     
@@ -93,7 +98,7 @@ class Game{
             cardIndices.append(index)
         }
         delegate?.flipToBack(cardIndices)
-    }
+    } */
     
     
     func indexByCard(_ card: Card) -> Int{
@@ -103,32 +108,3 @@ class Game{
 }
 
 
-
-/*
-func didSelectCard(_ card: Card){
-    
-    
-    if card.isFaceUp { return }                                         //card is already opened
-    
-    flipToFace([card])
-    
-    if cardsOpened.isEmpty {                                            // в cardsOpened ничего нет
-        
-        cardsOpened.append(card)
-        cards[indexByCard(card)].isFaceUp = true
-        
-    } else {                                                            // в cardsOpened есть первая карточка
-        
-        if card.id == cardsOpened[0].id {                               //карточки совпали
-            cards[indexByCard(card)].isFaceUp = true
-            cardsOpened.removeAll()
-        } else {                                                        //карточки не совпали
-            cards[indexByCard(cardsOpened[0])].isFaceUp = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.flipToBack(self.cardsOpened)
-            }
-            //cardsOpened.removeAll()
-        }
-        
-    }
-}*/
