@@ -16,7 +16,6 @@
 		840FA325201F1403007B4958 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA324201F1403007B4958 /* Card.swift */; };
 		840FA327201F1835007B4958 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA326201F1835007B4958 /* CardViewCell.swift */; };
 		843F280D20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F280C20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift */; };
-		8447AE1F203C2E3A006A9C30 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447AE1E203C2E3A006A9C30 /* MenuViewController.swift */; };
 		8447AE61203C8772006A9C30 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447AE60203C8772006A9C30 /* DesignableView.swift */; };
 		844CB0B92021F8550097988C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB0B82021F8550097988C /* Settings.swift */; };
 		8466F1862034B9E300C4D351 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F1852034B9E300C4D351 /* Game.swift */; };
@@ -34,7 +33,6 @@
 		840FA324201F1403007B4958 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		840FA326201F1835007B4958 /* CardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		843F280C20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		8447AE1E203C2E3A006A9C30 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8447AE60203C8772006A9C30 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		844CB0B82021F8550097988C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8466F1852034B9E300C4D351 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 				840FA312201F0F8A007B4958 /* AppDelegate.swift */,
 				844CB0B82021F8550097988C /* Settings.swift */,
 				840FA314201F0F8A007B4958 /* GameViewController.swift */,
-				8447AE1E203C2E3A006A9C30 /* MenuViewController.swift */,
 				8466F1852034B9E300C4D351 /* Game.swift */,
 				840FA316201F0F8A007B4958 /* Main.storyboard */,
 				8447AE60203C8772006A9C30 /* DesignableView.swift */,
@@ -164,7 +161,6 @@
 				844CB0B92021F8550097988C /* Settings.swift in Sources */,
 				840FA325201F1403007B4958 /* Card.swift in Sources */,
 				843F280D20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
-				8447AE1F203C2E3A006A9C30 /* MenuViewController.swift in Sources */,
 				840FA327201F1835007B4958 /* CardViewCell.swift in Sources */,
 				8466F1862034B9E300C4D351 /* Game.swift in Sources */,
 				840DDD10202C9AB700094903 /* ArrayExtention.swift in Sources */,

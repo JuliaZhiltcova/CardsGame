@@ -9,8 +9,6 @@
 import Foundation
 
 protocol CardsGame{
-    //func flipToFace(_ cardIndices: [Int])
-    //func flipToBack(_ cardIndices: [Int])
     func flip(_ cardIndices: [Int], toFace direction: Bool)
 }
 
@@ -44,8 +42,7 @@ class Game{
         
         
         if card.isFaceUp { return }
-        
-        //flipToFace([card])
+
         flip([card], toFace: true)
         
         if !cardsOpened.isEmpty {
@@ -58,7 +55,6 @@ class Game{
                 cardsOpened.append(card)
                 var cardsOpened1 = cardsOpened
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                   // self.flipToBack(cardsOpened1)
                     self.flip(cardsOpened1, toFace: false)
                     cardsOpened1.removeAll()
                 }
@@ -80,25 +76,6 @@ class Game{
         }
         delegate?.flip(cardIndices, toFace: toFace)
     }
-    
-   /* func flipToFace(_ cards: [Card]){
-        var cardIndices = [Int]()
-        for item in cards {
-            let index = indexByCard(item)
-            cardIndices.append(index)
-        }
-        delegate?.flipToFace(cardIndices)
-    }
-    
-    
-    func flipToBack(_ cards: [Card]){
-        var cardIndices = [Int]()
-        for item in cards {
-            let index = indexByCard(item)
-            cardIndices.append(index)
-        }
-        delegate?.flipToBack(cardIndices)
-    } */
     
     
     func indexByCard(_ card: Card) -> Int{
