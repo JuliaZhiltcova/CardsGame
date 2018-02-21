@@ -98,6 +98,7 @@
                         <outlet property="cardsCollectionView" destination="6av-eA-ZN6" id="Rf9-63-awd"/>
                         <outlet property="gameContentView" destination="ACo-hd-gfJ" id="1XS-F5-ieK"/>
                         <outlet property="menuView" destination="bUc-E4-E4w" id="2QW-AN-n3R"/>
+                        <outlet property="timerLabel" destination="jfb-Jc-jEW" id="QZ5-UF-MhA"/>
                         <outlet property="visualEffectView" destination="7RM-U7-wVo" id="cxk-BM-Nk5"/>
                     </connections>
                 </viewController>
@@ -111,13 +112,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Назад в игру"/>
                             <connections>
-                                <action selector="backToGame:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="Zul-YX-1al"/>
+                                <action selector="backToGameButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="QIM-Kn-Lb8"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLX-xC-ELP">
                             <rect key="frame" x="82" y="58" width="116" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Сыграть заново"/>
+                            <connections>
+                                <action selector="playAgainButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="bzG-3l-6cc"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPh-FE-Ieh">
                             <rect key="frame" x="105" y="100" width="46" height="30"/>

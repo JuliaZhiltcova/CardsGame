@@ -10,6 +10,31 @@ import UIKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var timerLabel: UILabel!
+    var seconds = 0
+    var timer = Timer()
+    var isTimerRunning = false
+
+    
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    func updateTimer(){
+        seconds += 1
+        timerLabel.text = timeString(time: TimeInterval(seconds)) //"\(seconds)"
+    }
+    
+    func timeString(time: TimeInterval) -> String {
+        
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+        
+    }
+    
     @IBOutlet weak var cardsCollectionView: UICollectionView!
     @IBOutlet weak var gameContentView: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
@@ -20,10 +45,18 @@ class GameViewController: UIViewController {
     let reuseIdentifier = "cardCell"
     let game = Game()
     
-    @IBAction func backToGame(_ sender: UIButton) {
-       animateOut()
+    @IBAction func backToGameButton(_ sender: UIButton) {
+        runTimer()
+        animateOut()
     }
     
+    @IBAction func playAgainButton(_ sender: UIButton) {
+        timer.invalidate()
+        seconds = 0
+        timerLabel.text = "\(seconds)"
+        runTimer()
+        animateOut()
+    }
 
     @IBAction func hintButton(_ sender: UIButton) {
     
@@ -34,6 +67,8 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func menuButton(_ sender: UIButton) {
+       
+        timer.invalidate()
         animateIn()
     }
     
@@ -74,7 +109,7 @@ class GameViewController: UIViewController {
         
         effect = visualEffectView.effect
         visualEffectView.effect = nil
-        
+        runTimer()
 
     }
     
