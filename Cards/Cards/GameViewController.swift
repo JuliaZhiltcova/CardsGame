@@ -53,13 +53,16 @@ class GameViewController: UIViewController {
     @IBAction func playAgainButton(_ sender: UIButton) {
         timer.invalidate()
         seconds = 0
-        timerLabel.text = "\(seconds)"
+        timerLabel.text = "00 : 00 : 00"
         runTimer()
         animateOut()
     }
 
     @IBAction func hintButton(_ sender: UIButton) {
+        flipOverAllHiddenCards()
+    }
     
+    func flipOverAllHiddenCards(){
         for (index, card) in game.cards.enumerated() where card.isFaceUp == false {
             let cell = cardsCollectionView.cellForItem(at: [0, index]) as! CardViewCell
             cell.flipOver()
@@ -116,35 +119,38 @@ class GameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        Settings.boundWidth = self.view.bounds.width
+        Settings.boundHeight = self.view.bounds.height
+        
+        
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        flipOverAllHiddenCards()
+    }
+    
+    override func viewWillLayoutSubviews() {
         cardsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         let horizontalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
         let verticalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
-
+        
         let widthConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: Settings.widthConstant)
         
         let heightConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: Settings.heightConstant)
+        
+        
         view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
         
+        
         cardsCollectionView.backgroundColor = UIColor.green
-
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-//    override var shouldAutorotate: Bool {
-//        return true
-//    }
-//    
-//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-//        return UIInterfaceOrientationMask.landscapeRight
-//    }
-//    
-//    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
-//        return UIInterfaceOrientation.landscapeRight
-//    }
+
     
     func cardForIndexPath(indexPath: IndexPath) -> Card {
         //return cards[(indexPath as NSIndexPath).section].[(indexPath as IndexPath).row]
@@ -158,7 +164,6 @@ class GameViewController: UIViewController {
         return cardsCollectionView.cellForItem(at: indexPath) as! CardViewCell
     }
     
-
 }
 
 
@@ -196,7 +201,26 @@ extension GameViewController: CardsGame {
             cell.flipCard(flipToFace: direction)
         }
     }
+    
+    func gameDidStart() {
+        <#code#>
+    }
 }
 
+
+
+
+
+//    override var shouldAutorotate: Bool {
+//        return true
+//    }
+//
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        return UIInterfaceOrientationMask.landscapeRight
+//    }
+//
+//    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
+//        return UIInterfaceOrientation.landscapeRight
+//    }
 
 

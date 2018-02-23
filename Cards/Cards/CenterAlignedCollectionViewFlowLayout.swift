@@ -32,6 +32,9 @@ class CenterAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
         for item in 0 ..< collectionView.numberOfItems(inSection: 0) + 0 {
         
             let indexPath = IndexPath(item: item, section: 0)
+           print (Settings.boundHeight)
+            print (Settings.boundWidth)
+            print(Settings.cardEdge)
             let frame = CGRect(x: xOffset, y: yOffset, width: Settings.cardEdge, height: Settings.cardEdge)
             let insetFrame = frame.insetBy(dx: 0, dy: 0)
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)

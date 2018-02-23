@@ -71,16 +71,28 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="layer" translatesAutoresizingMaskIntoConstraints="NO" id="2eq-yv-Knq">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layer" translatesAutoresizingMaskIntoConstraints="NO" id="2eq-yv-Knq">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q4t-YZ-9Jx">
+                                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q4t-YZ-9Jx">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                     </subviews>
                                                 </view>
+                                                <constraints>
+                                                    <constraint firstItem="2eq-yv-Knq" firstAttribute="leading" secondItem="c1w-SP-yg7" secondAttribute="leading" id="0k1-He-yra"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Q4t-YZ-9Jx" secondAttribute="trailing" id="4cm-cn-MDF"/>
+                                                    <constraint firstItem="Q4t-YZ-9Jx" firstAttribute="top" secondItem="c1w-SP-yg7" secondAttribute="top" id="B9D-JD-xfz"/>
+                                                    <constraint firstAttribute="bottom" secondItem="2eq-yv-Knq" secondAttribute="bottom" id="J2E-Nq-ym4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Q4t-YZ-9Jx" secondAttribute="bottom" id="Y8e-VJ-oiM"/>
+                                                    <constraint firstItem="Q4t-YZ-9Jx" firstAttribute="width" secondItem="2eq-yv-Knq" secondAttribute="width" id="iZJ-HY-HLf"/>
+                                                    <constraint firstItem="Q4t-YZ-9Jx" firstAttribute="leading" secondItem="c1w-SP-yg7" secondAttribute="leading" id="lWs-xy-8mp"/>
+                                                    <constraint firstAttribute="trailing" secondItem="2eq-yv-Knq" secondAttribute="trailing" id="m3b-SF-bGO"/>
+                                                    <constraint firstItem="Q4t-YZ-9Jx" firstAttribute="height" secondItem="2eq-yv-Knq" secondAttribute="height" id="otu-vl-Qfq"/>
+                                                    <constraint firstItem="2eq-yv-Knq" firstAttribute="height" secondItem="c1w-SP-yg7" secondAttribute="height" id="ryn-3k-yio"/>
+                                                    <constraint firstItem="2eq-yv-Knq" firstAttribute="top" secondItem="c1w-SP-yg7" secondAttribute="top" id="vDh-RG-Hsg"/>
+                                                    <constraint firstItem="2eq-yv-Knq" firstAttribute="width" secondItem="c1w-SP-yg7" secondAttribute="width" id="xwV-RU-gm4"/>
+                                                </constraints>
                                                 <connections>
                                                     <outlet property="backSideLayer" destination="2eq-yv-Knq" id="j28-Lo-8jD"/>
                                                     <outlet property="cardImageView" destination="Q4t-YZ-9Jx" id="kk5-fW-gRz"/>

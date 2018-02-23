@@ -9,6 +9,7 @@
 import Foundation
 
 protocol CardsGame{
+    func gameDidStart()
     func flip(_ cardIndices: [Int], toFace direction: Bool)
 }
 
