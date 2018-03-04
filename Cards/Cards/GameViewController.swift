@@ -16,6 +16,147 @@ class GameViewController: UIViewController {
     var isTimerRunning = false
 
     
+    @IBOutlet weak var cardsCollectionView: UICollectionView!
+    @IBOutlet weak var gameContentView: UIView!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    
+    @IBOutlet var menuView: UIView!
+    
+    var effect: UIVisualEffect!
+    let reuseIdentifier = "cardCell"
+    let game = Game()
+    
+    var level: Int?
+    
+    @IBAction func backToGameButton(_ sender: UIButton) {
+        runTimer()
+        animateOut()
+    }
+    
+    @IBAction func playAgainButton(_ sender: UIButton) {
+        game.finishGame()
+        game.startNewGame()
+        animateOut()
+    }
+
+
+    @IBAction func hintButton(_ sender: UIButton) {
+        timer.invalidate()
+        flipOverAllHiddenCards(isPenalty: true)
+    }
+    
+    
+    @IBAction func menuButton(_ sender: UIButton) {
+        timer.invalidate()
+        animateIn()
+    }
+    
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        cardsCollectionView.delegate = self
+        cardsCollectionView.dataSource = self
+        game.delegate = self
+        
+        cardsCollectionView.backgroundColor = UIColor.green
+        
+        effect = visualEffectView.effect
+        visualEffectView.effect = nil
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Settings.boundWidth = self.view.bounds.width
+        Settings.boundHeight = self.view.bounds.height
+        
+        game.startNewGame()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+
+        flipOverAllHiddenCards(isPenalty: false)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        cardsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+        
+        let widthConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: Settings.widthConstant)
+        
+        let heightConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: Settings.heightConstant)
+        
+        view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        cardsCollectionView.backgroundColor = UIColor.green
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+
+    
+    func cardForIndexPath(indexPath: IndexPath) -> Card {
+        //return cards[(indexPath as NSIndexPath).section].[(indexPath as IndexPath).row]
+        let row = (indexPath as IndexPath).row
+        return game.cards[row]
+    }
+    
+    func cellForIndexPath(indexPath: IndexPath) -> CardViewCell {
+        return cardsCollectionView.cellForItem(at: indexPath) as! CardViewCell
+    }
+
+    
+    func flipOverAllHiddenCards(isPenalty addTime: Bool, completion: (() -> ())? = nil) {
+        
+        let faceDownCards = getFaceDownCards()
+        
+        CATransaction.begin()
+        CATransaction.setCompletionBlock({
+            
+            CATransaction.begin()
+            CATransaction.setCompletionBlock({
+                if addTime {
+                    self.seconds += 30
+                    self.timerLabel.text = self.timeString(time: TimeInterval(self.seconds))
+                    self.runTimer()
+                }
+                else {
+                    self.runTimer()
+                }
+            })
+            
+            faceDownCards.forEach { cell in
+                cell.prepareFlipToBackAnimation()
+            }
+            
+            CATransaction.commit()
+        })
+        
+        faceDownCards.forEach { cell in
+            cell.prepareFlipToFaceAnimation()
+        }
+        
+        
+        CATransaction.commit()
+        
+    }
+    
+    func getFaceDownCards() -> [CardViewCell]{
+        var faceDownCards = [CardViewCell]()
+        for (index, card) in game.cards.enumerated() where card.isFaceUp == false {
+            let cell = cardsCollectionView.cellForItem(at: [0, index]) as! CardViewCell
+            faceDownCards.append(cell)
+        }
+        return faceDownCards
+    }
+
+    
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
     }
@@ -34,136 +175,6 @@ class GameViewController: UIViewController {
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
         
     }
-    
-    @IBOutlet weak var cardsCollectionView: UICollectionView!
-    @IBOutlet weak var gameContentView: UIView!
-    @IBOutlet weak var visualEffectView: UIVisualEffectView!
-    
-    @IBOutlet var menuView: UIView!
-    
-    var effect: UIVisualEffect!
-    let reuseIdentifier = "cardCell"
-    let game = Game()
-    
-    @IBAction func backToGameButton(_ sender: UIButton) {
-        runTimer()
-        animateOut()
-    }
-    
-    @IBAction func playAgainButton(_ sender: UIButton) {
-        timer.invalidate()
-        seconds = 0
-        timerLabel.text = "00 : 00 : 00"
-        runTimer()
-        animateOut()
-    }
-
-    @IBAction func hintButton(_ sender: UIButton) {
-        flipOverAllHiddenCards()
-    }
-    
-    func flipOverAllHiddenCards(){
-        for (index, card) in game.cards.enumerated() where card.isFaceUp == false {
-            let cell = cardsCollectionView.cellForItem(at: [0, index]) as! CardViewCell
-            cell.flipOver()
-        }
-    }
-    
-    @IBAction func menuButton(_ sender: UIButton) {
-       
-        timer.invalidate()
-        animateIn()
-    }
-    
-    
-    func animateIn(){
-        self.view.bringSubview(toFront: visualEffectView)
-        self.view.addSubview(menuView)
-        menuView.center = self.view.center
-        menuView.alpha = 0
-        
-        UIView.animate(withDuration: 0.4) {
-            self.visualEffectView.effect = self.effect
-            self.menuView.alpha = 1.0
-        }
-    }
-    
-    func animateOut(){
-        self.view.sendSubview(toBack: visualEffectView)
-        UIView.animate(withDuration: 0.2, animations: {
-
-            self.menuView.alpha = 0
-            self.visualEffectView.effect = nil
-        }) { (success: Bool) in
-            self.menuView.removeFromSuperview()
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        cardsCollectionView.delegate = self
-        cardsCollectionView.dataSource = self
-        game.delegate = self
-        
-        cardsCollectionView.backgroundColor = UIColor.green
-        
-        game.startGame()
-        
-        effect = visualEffectView.effect
-        visualEffectView.effect = nil
-        runTimer()
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        Settings.boundWidth = self.view.bounds.width
-        Settings.boundHeight = self.view.bounds.height
-        
-        
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        flipOverAllHiddenCards()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        cardsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        let horizontalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
-        
-        let widthConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: Settings.widthConstant)
-        
-        let heightConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: Settings.heightConstant)
-        
-        
-        view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
-        
-        
-        cardsCollectionView.backgroundColor = UIColor.green
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    
-    func cardForIndexPath(indexPath: IndexPath) -> Card {
-        //return cards[(indexPath as NSIndexPath).section].[(indexPath as IndexPath).row]
-        
-        let row = (indexPath as IndexPath).row
-
-        return game.cards[row]
-    }
-    
-    func cellForIndexPath(indexPath: IndexPath) -> CardViewCell {
-        return cardsCollectionView.cellForItem(at: indexPath) as! CardViewCell
-    }
-    
 }
 
 
@@ -175,18 +186,17 @@ extension GameViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CardViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CardViewCell
-        let card: Card
-        card = game.cards[indexPath.row]
+        let card = game.cards[indexPath.row]
+        
         cell.cardImageView.image = UIImage(named: card.name)
-        
-        
+        cell.bringBackToFace()
+
         return cell
     }
 }
 
 extension GameViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // let cell: CardViewCell = collectionView.cellForItem(at: indexPath) as! CardViewCell
         let card = cardForIndexPath(indexPath: indexPath)
         game.didSelectCard(card)
     }
@@ -203,11 +213,43 @@ extension GameViewController: CardsGame {
     }
     
     func gameDidStart() {
-        <#code#>
+        cardsCollectionView.reloadData()
+        timer.invalidate()
+        seconds = 0
+        timerLabel.text = "00 : 00 : 00"
+    }
+    
+    func gameDidEnd(){
+        timer.invalidate()
     }
 }
 
+extension GameViewController {
 
+    func animateIn(){
+        self.view.bringSubview(toFront: visualEffectView)
+        self.view.addSubview(menuView)
+        menuView.center = self.view.center
+        menuView.alpha = 0
+        
+        UIView.animate(withDuration: 0.4) {
+            self.visualEffectView.effect = self.effect
+            self.menuView.alpha = 1.0
+        }
+    }
+    
+    func animateOut(){
+        self.view.sendSubview(toBack: visualEffectView)
+        UIView.animate(withDuration: 0.2, animations: {
+            
+            self.menuView.alpha = 0
+            self.visualEffectView.effect = nil
+        }) { (success: Bool) in
+            self.menuView.removeFromSuperview()
+            self.flipOverAllHiddenCards(isPenalty: false)
+        }
+    }
+}
 
 
 
@@ -222,5 +264,29 @@ extension GameViewController: CardsGame {
 //    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation{
 //        return UIInterfaceOrientation.landscapeRight
 //    }
+
+
+/*
+func flipOverAllHiddenCards(){
+    for (index, card) in game.cards.enumerated() where card.isFaceUp == false {
+        // let visible = cardsCollectionView.indexPathsForVisibleItems
+        // print(visible)
+        //let cell = cardsCollectionView.cellForItem(at: [0, index]) as! CardViewCell
+        let cell = cells[index]
+        cell.flipOver()
+    }
+}
+ 
+ 
+ 
+ func flipOverAllHiddenCards(){
+ for (index, card) in game.cards.enumerated() where card.isFaceUp == false {
+ let cell = cells[index]
+ //cell.flipOver()
+ cell.flipCard(flipToFace: true)
+ cell.flipCard(flipToFace: false)
+ }
+ }
+ */
 
 

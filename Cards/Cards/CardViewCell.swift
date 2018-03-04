@@ -13,8 +13,7 @@ class CardViewCell: UICollectionViewCell {
     @IBOutlet weak var cardImageView: UIImageView!
 
     @IBOutlet weak var backSideLayer: UIImageView!
-
-  
+    
    let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromTop, .showHideTransitionViews]
     
    
@@ -29,12 +28,56 @@ class CardViewCell: UICollectionViewCell {
         
     }
     
-    func flipOver(){
+    
+    func prepareFlipToFaceAnimation(){
+        let transition = CATransition()
+        transition.startProgress = 0.0
+        transition.endProgress = 1.0
+        transition.type = "flip"
+        transition.repeatCount = 1
+        transition.subtype = kCATransitionFromTop
+        transition.duration = 3
         
-        UIView.transition(from: backSideLayer, to: cardImageView, duration: 3, options: transitionOptions) { success in
-            UIView.transition(from: self.cardImageView, to: self.backSideLayer, duration: 3, options: self.transitionOptions)
-        }
+        cardImageView.layer.add(transition, forKey: "transition")
+        backSideLayer.layer.add(transition, forKey: "transition")
+        
+        cardImageView.isHidden = false
+        backSideLayer.isHidden = true
     }
+    
+    func prepareFlipToBackAnimation(){
+        let transition = CATransition()
+        transition.startProgress = 0.0
+        transition.endProgress = 1.0
+        transition.type = "flip"
+        transition.repeatCount = 1
+        transition.subtype = kCATransitionFromTop
+        transition.duration = 3
+        
+        self.cardImageView.layer.add(transition, forKey: "transition")
+        self.backSideLayer.layer.add(transition, forKey: "transition")
+        
+        self.cardImageView.isHidden = true
+        self.backSideLayer.isHidden = false
+    }
+    
+ /*   func flipOver(completion:((Void)->Void)? = nil){
+
+        UIView.transition(from: backSideLayer, to: cardImageView, duration: 3, options: transitionOptions) { success in
+            UIView.transition(from: self.cardImageView, to: self.backSideLayer, duration: 3, options: self.transitionOptions) { success in
+                completion?()
+            }
+        }
+    } */
+
+    
+    func bringBackToFace(){
+        backSideLayer.isHidden = false
+        cardImageView.isHidden = true
+       // bringSubview(toFront: backSideLayer)
+    }
+    
+    
 }
     
 /*    func flipCardToBack(){

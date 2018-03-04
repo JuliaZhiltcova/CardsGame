@@ -11,14 +11,16 @@ import Foundation
 protocol CardsGame{
     func gameDidStart()
     func flip(_ cardIndices: [Int], toFace direction: Bool)
+    func gameDidEnd()
 }
 
 class Game{
 
-    let stage = 4
+    let stage = 3
     var cards: [Card] = [Card]()
     var cardsOpened = [Card]()
     var delegate: CardsGame?
+
     
     func createRandomCardsArray(){
         for card in 0..<(Settings.ElementsPerRowAndColumn[stage - 1][0]/2 ){
@@ -26,17 +28,30 @@ class Game{
             cards.append(item)
             cards.append(item.copy() as! Card)
         }
-        
+
+       // cards.forEach { card in
+       //     print(Unmanaged<AnyObject>.passUnretained(card as AnyObject).toOpaque())
+       // }
         return cards.shuffled()
     }
     
     
-    func startGame()  {
+    func startNewGame()  {
         createRandomCardsArray()
+
+//        cards.forEach { card in
+//            print("\(card.id) -- \(card.name) -- \(card.isFaceUp)" )
+//        }
+//        print("---------")
+
+        delegate?.gameDidStart()
     }
     
     func finishGame() {
-    
+        cards.removeAll()
+        cardsOpened.removeAll()
+
+        delegate?.gameDidEnd()
     }
     
     func didSelectCard(_ card: Card){
@@ -65,6 +80,10 @@ class Game{
         } else {
             cardsOpened.append(card)
             cards[indexByCard(card)].isFaceUp = true
+        }
+        
+        if ((cards.filter{ $0.isFaceUp == false}.count)  == 0) {
+            finishGame()
         }
         
     }

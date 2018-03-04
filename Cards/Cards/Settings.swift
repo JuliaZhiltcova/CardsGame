@@ -12,9 +12,9 @@ import UIKit
 class Settings {
     
     
-    static let cardEdge: CGFloat = 98.0
+    //static let cardEdge: CGFloat = 40.0
     static let interItemInset: CGFloat = 10.0
-    static let stage = 4
+    static let stage = 3
     
     static var boundWidth: CGFloat = 0
     static var boundHeight: CGFloat = 0
@@ -26,13 +26,16 @@ class Settings {
         [10, 4, 3],
         [12, 4, 3],
         [14, 4, 4],
-        [16, 4, 4]]
+        [16, 4, 4],
+        [18, 5, 4],
+        [20, 5, 4],
+        [22, 6, 4]]
     
     
-  //  static var cardEdge: CGFloat{
-  //      return (boundHeight - interItemInset * CGFloat(ElementsPerRowAndColumn[stage - 1][2] + 1) - CGFloat(80)) / CGFloat(ElementsPerRowAndColumn[stage - 1][2])
+    static var cardEdge: CGFloat{
+        return (boundHeight - interItemInset * CGFloat(ElementsPerRowAndColumn[stage - 1][2] + 1) - CGFloat(boundHeight/4)) / CGFloat(ElementsPerRowAndColumn[stage - 1][2])
         
-  //  }
+    }
     
     
     static var widthConstant: CGFloat {

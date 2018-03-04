@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xFt-R6-0Eh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AOP-8R-J4a">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,67 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Level View Controller-->
+        <scene sceneID="1Zo-XG-XNK">
+            <objects>
+                <collectionViewController id="q6U-Lg-g6E" customClass="LevelViewController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="c7Q-6K-nwZ">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B1C-S3-01k">
+                            <size key="itemSize" width="96" height="89"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="levelCell" id="3DG-GO-XlP" customClass="LevelViewCell" customModule="Cards" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="96" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J8Z-yh-IQR">
+                                            <rect key="frame" x="0.0" y="-0.5" width="96" height="89"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYE-s7-ojo">
+                                            <rect key="frame" x="27" y="68" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="J8Z-yh-IQR" firstAttribute="centerX" secondItem="3DG-GO-XlP" secondAttribute="centerX" id="OYc-cf-Rnf"/>
+                                    <constraint firstItem="J8Z-yh-IQR" firstAttribute="height" secondItem="3DG-GO-XlP" secondAttribute="height" id="WD9-x7-4e2"/>
+                                    <constraint firstItem="J8Z-yh-IQR" firstAttribute="centerY" secondItem="3DG-GO-XlP" secondAttribute="centerY" id="YV6-zj-LsL"/>
+                                    <constraint firstItem="J8Z-yh-IQR" firstAttribute="width" secondItem="3DG-GO-XlP" secondAttribute="width" id="rNr-ua-kuI"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="bestTimeLabel" destination="cYE-s7-ojo" id="xPR-CO-SVy"/>
+                                    <outlet property="levelImage" destination="J8Z-yh-IQR" id="W8I-XA-7Mf"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="q6U-Lg-g6E" id="03Z-cE-Ugh"/>
+                            <outlet property="delegate" destination="q6U-Lg-g6E" id="Z1y-gx-xCp"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="79b-yX-ZYh"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="enP-E3-Wh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="360.2698650674663" y="4"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="JJE-KO-JgU">
             <objects>
-                <viewController id="xFt-R6-0Eh" customClass="GameViewController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameVC" id="xFt-R6-0Eh" customClass="GameViewController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vAS-Ti-ub5"/>
                         <viewControllerLayoutGuide type="bottom" id="dCz-hI-UTG"/>
@@ -71,10 +128,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layer" translatesAutoresizingMaskIntoConstraints="NO" id="2eq-yv-Knq">
+                                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q4t-YZ-9Jx">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         </imageView>
-                                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q4t-YZ-9Jx">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layer" translatesAutoresizingMaskIntoConstraints="NO" id="2eq-yv-Knq">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         </imageView>
                                                     </subviews>
@@ -116,11 +173,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AX-Xa-FOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="bUc-E4-E4w" customClass="DesignableView" customModule="Cards" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="271" height="231"/>
+                    <rect key="frame" x="0.0" y="0.0" width="293" height="197"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBV-WX-pZP">
-                            <rect key="frame" x="82" y="20" width="107" height="30"/>
+                            <rect key="frame" x="93" y="20" width="107" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Назад в игру"/>
                             <connections>
@@ -128,7 +185,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLX-xC-ELP">
-                            <rect key="frame" x="82" y="58" width="116" height="30"/>
+                            <rect key="frame" x="84" y="55" width="116" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Сыграть заново"/>
                             <connections>
@@ -136,12 +193,12 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPh-FE-Ieh">
-                            <rect key="frame" x="105" y="100" width="46" height="30"/>
+                            <rect key="frame" x="130" y="87" width="46" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Выход"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJH-in-sb1">
-                            <rect key="frame" x="105" y="138" width="46" height="30"/>
+                            <rect key="frame" x="130" y="125" width="46" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Звук"/>
                         </button>
@@ -154,7 +211,25 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </objects>
-            <point key="canvasLocation" x="238.83058470764618" y="4"/>
+            <point key="canvasLocation" x="1029.5352323838081" y="4"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ogF-t6-PY9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="AOP-8R-J4a" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wr9-No-ZOa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="q6U-Lg-g6E" kind="relationship" relationship="rootViewController" id="O7A-El-NYm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="svc-xy-Oal" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-430.43478260869568" y="4"/>
         </scene>
     </scenes>
     <resources>
