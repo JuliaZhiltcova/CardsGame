@@ -10,14 +10,45 @@ import UIKit
 
 class CenterAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
-    //let interItemInset: CGFloat = 10.0
     fileprivate var cache = [UICollectionViewLayoutAttributes]()
-    //let cardEdge: CGFloat = 60.0
-    let stage = 3
+  
+
+    let interItemInset: CGFloat = 10.0
+    //var level: Int!
     
-    lazy var isFull: Bool = ( Settings.ElementsPerRowAndColumn[self.stage - 1][1] *
-                              Settings.ElementsPerRowAndColumn[self.stage - 1][2]  -
-                              Settings.ElementsPerRowAndColumn[self.stage - 1][0] == 0) ? true : false
+    var boundWidth: CGFloat = 0
+    var boundHeight: CGFloat = 0
+    
+
+    
+    
+    //static func isThereNextLevel(currentLevel:Int) -> Bool {
+        
+    //}
+    
+    
+    //func asdfhuasdfo {
+    //    _ = CenterAlignedCollectionViewFlowLayout.isThereNextLevel(currentLevel: 8)
+    //}
+    
+    var level = Level.currentLevel
+    var cardEdge: CGFloat{
+        return (boundHeight - interItemInset * CGFloat(GameSettings.ElementsPerRowAndColumn[level - 1][2] + 1) - CGFloat(boundHeight/4)) / CGFloat(GameSettings.ElementsPerRowAndColumn[level - 1][2])
+    }
+    
+    
+    var widthConstant: CGFloat {
+        return CGFloat(GameSettings.ElementsPerRowAndColumn[level - 1][1])*(cardEdge + interItemInset)
+    }
+    
+    
+    var heightConstant: CGFloat {
+        return CGFloat(GameSettings.ElementsPerRowAndColumn[level - 1][2]) * ( cardEdge + interItemInset)
+    }
+    
+    lazy var isFull: Bool =  GameSettings.ElementsPerRowAndColumn[self.level - 1][1] *
+                             GameSettings.ElementsPerRowAndColumn[self.level - 1][2]  -
+                             GameSettings.ElementsPerRowAndColumn[self.level - 1][0] == 0
     
     override func prepare() {
     
@@ -25,36 +56,36 @@ class CenterAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
             return
         }
 
-        var xOffset: CGFloat = Settings.interItemInset
-        var yOffset: CGFloat = Settings.interItemInset
+        var xOffset: CGFloat = interItemInset
+        var yOffset: CGFloat = interItemInset
         var row = 1
         
         for item in 0 ..< collectionView.numberOfItems(inSection: 0) + 0 {
         
             let indexPath = IndexPath(item: item, section: 0)
 
-            let frame = CGRect(x: xOffset, y: yOffset, width: Settings.cardEdge, height: Settings.cardEdge)
+            let frame = CGRect(x: xOffset, y: yOffset, width: cardEdge, height: cardEdge)
             let insetFrame = frame.insetBy(dx: 0, dy: 0)
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attributes.frame = insetFrame
             cache.append(attributes)
             
-            if ((item + 1) % Settings.ElementsPerRowAndColumn[stage - 1][1]) != 0 {
-                xOffset = xOffset + Settings.cardEdge + Settings.interItemInset
+            if ((item + 1) % GameSettings.ElementsPerRowAndColumn[level - 1][1]) != 0 {
+                xOffset = xOffset + cardEdge + interItemInset
             } else {
-                xOffset = Settings.interItemInset
-                yOffset = yOffset + Settings.cardEdge + Settings.interItemInset
+                xOffset = interItemInset
+                yOffset = yOffset + cardEdge + interItemInset
                 row = row + 1
-                if !isFull && row == Settings.ElementsPerRowAndColumn[stage - 1][2]{
-                    let numberOfCardsInLastRow = Settings.ElementsPerRowAndColumn[stage - 1][1] -
-                        (Settings.ElementsPerRowAndColumn[stage - 1][1] * Settings.ElementsPerRowAndColumn[stage - 1][2] - Settings.ElementsPerRowAndColumn[stage - 1][0])
+                if !isFull && row == GameSettings.ElementsPerRowAndColumn[level - 1][2]{
+                    let numberOfCardsInLastRow = GameSettings.ElementsPerRowAndColumn[level - 1][1] -
+                        (GameSettings.ElementsPerRowAndColumn[level - 1][1] * GameSettings.ElementsPerRowAndColumn[level - 1][2] - GameSettings.ElementsPerRowAndColumn[level - 1][0])
               
                     let additionalSpace: CGFloat = (
                         //length of full row
-                        (CGFloat(Settings.ElementsPerRowAndColumn[stage - 1][1]) * CGFloat(Settings.cardEdge) +
-                            CGFloat(Settings.ElementsPerRowAndColumn[stage - 1][1] - 1) * CGFloat(Settings.interItemInset)) -
+                        (CGFloat(GameSettings.ElementsPerRowAndColumn[level - 1][1]) * CGFloat(cardEdge) +
+                            CGFloat(GameSettings.ElementsPerRowAndColumn[level - 1][1] - 1) * CGFloat(interItemInset)) -
                         //length of unfull row
-                            (CGFloat(numberOfCardsInLastRow) * CGFloat(Settings.cardEdge) + CGFloat(numberOfCardsInLastRow - 1) * Settings.interItemInset)
+                            (CGFloat(numberOfCardsInLastRow) * CGFloat(cardEdge) + CGFloat(numberOfCardsInLastRow - 1) * interItemInset)
                         
                         ) / 2
                     xOffset = xOffset + additionalSpace

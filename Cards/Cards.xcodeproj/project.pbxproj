@@ -10,6 +10,7 @@
 		840B7CDF204C2F5A009BE583 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CDE204C2F5A009BE583 /* LevelViewController.swift */; };
 		840B7CE1204C2FA7009BE583 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CE0204C2FA7009BE583 /* Level.swift */; };
 		840B7CE3204C3221009BE583 /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CE2204C3221009BE583 /* LevelViewCell.swift */; };
+		840CBFD120584C2B007D9033 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CBFD020584C2B007D9033 /* GameSettings.swift */; };
 		840DDD10202C9AB700094903 /* ArrayExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDD0F202C9AB700094903 /* ArrayExtention.swift */; };
 		840FA313201F0F8A007B4958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA312201F0F8A007B4958 /* AppDelegate.swift */; };
 		840FA315201F0F8A007B4958 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA314201F0F8A007B4958 /* GameViewController.swift */; };
@@ -18,9 +19,9 @@
 		840FA31D201F0F8A007B4958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840FA31B201F0F8A007B4958 /* LaunchScreen.storyboard */; };
 		840FA325201F1403007B4958 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA324201F1403007B4958 /* Card.swift */; };
 		840FA327201F1835007B4958 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA326201F1835007B4958 /* CardViewCell.swift */; };
+		841790FF205050B90002582D /* EndOfGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841790FE205050B90002582D /* EndOfGameController.swift */; };
 		843F280D20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F280C20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift */; };
 		8447AE61203C8772006A9C30 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447AE60203C8772006A9C30 /* DesignableView.swift */; };
-		844CB0B92021F8550097988C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB0B82021F8550097988C /* Settings.swift */; };
 		8466F1862034B9E300C4D351 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F1852034B9E300C4D351 /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		840B7CDE204C2F5A009BE583 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		840B7CE0204C2FA7009BE583 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		840B7CE2204C3221009BE583 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
+		840CBFD020584C2B007D9033 /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		840DDD0F202C9AB700094903 /* ArrayExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtention.swift; sourceTree = "<group>"; };
 		840FA30F201F0F8A007B4958 /* Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840FA312201F0F8A007B4958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,9 +40,9 @@
 		840FA31E201F0F8A007B4958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840FA324201F1403007B4958 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		840FA326201F1835007B4958 /* CardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		841790FE205050B90002582D /* EndOfGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndOfGameController.swift; sourceTree = "<group>"; };
 		843F280C20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		8447AE60203C8772006A9C30 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
-		844CB0B82021F8550097988C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8466F1852034B9E300C4D351 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,10 +77,11 @@
 			isa = PBXGroup;
 			children = (
 				840FA312201F0F8A007B4958 /* AppDelegate.swift */,
-				844CB0B82021F8550097988C /* Settings.swift */,
+				841790FE205050B90002582D /* EndOfGameController.swift */,
 				840FA314201F0F8A007B4958 /* GameViewController.swift */,
 				840B7CE2204C3221009BE583 /* LevelViewCell.swift */,
 				840B7CDE204C2F5A009BE583 /* LevelViewController.swift */,
+				840CBFD020584C2B007D9033 /* GameSettings.swift */,
 				8466F1852034B9E300C4D351 /* Game.swift */,
 				840FA316201F0F8A007B4958 /* Main.storyboard */,
 				840B7CE0204C2FA7009BE583 /* Level.swift */,
@@ -168,8 +171,9 @@
 			files = (
 				840FA315201F0F8A007B4958 /* GameViewController.swift in Sources */,
 				840B7CE1204C2FA7009BE583 /* Level.swift in Sources */,
+				840CBFD120584C2B007D9033 /* GameSettings.swift in Sources */,
+				841790FF205050B90002582D /* EndOfGameController.swift in Sources */,
 				840B7CDF204C2F5A009BE583 /* LevelViewController.swift in Sources */,
-				844CB0B92021F8550097988C /* Settings.swift in Sources */,
 				840FA325201F1403007B4958 /* Card.swift in Sources */,
 				840B7CE3204C3221009BE583 /* LevelViewCell.swift in Sources */,
 				843F280D20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,

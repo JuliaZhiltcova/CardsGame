@@ -12,18 +12,28 @@ protocol CardsGame{
     func gameDidStart()
     func flip(_ cardIndices: [Int], toFace direction: Bool)
     func gameDidEnd()
+    func goToNextLevel()
 }
 
-class Game{
+// 1 создать Game
+// 2 создать контроллер
 
-    let stage = 3
+class Game{
+    
+    var level: Int
     var cards: [Card] = [Card]()
     var cardsOpened = [Card]()
     var delegate: CardsGame?
 
+    init(level: Int) {
+        self.level = level
+    }
     
+    var numberOfCards: Int{
+        return level * 2 + 2
+    }
     func createRandomCardsArray(){
-        for card in 0..<(Settings.ElementsPerRowAndColumn[stage - 1][0]/2 ){
+        for card in 0..<numberOfCards/2{ //(Settings.ElementsPerRowAndColumn[level - 1][0]/2 ){
             let item = Card(id: card, name: "Img\(card)")
             cards.append(item)
             cards.append(item.copy() as! Card)
@@ -45,6 +55,10 @@ class Game{
 //        print("---------")
 
         delegate?.gameDidStart()
+    }
+    
+    func goToNextLevel(){
+        delegate?.goToNextLevel()
     }
     
     func finishGame() {
@@ -84,6 +98,7 @@ class Game{
         
         if ((cards.filter{ $0.isFaceUp == false}.count)  == 0) {
             finishGame()
+            goToNextLevel()
         }
         
     }

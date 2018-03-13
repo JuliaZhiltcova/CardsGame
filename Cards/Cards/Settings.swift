@@ -14,7 +14,7 @@ class Settings {
     
     //static let cardEdge: CGFloat = 40.0
     static let interItemInset: CGFloat = 10.0
-    static let stage = 3
+    static var level = 0
     
     static var boundWidth: CGFloat = 0
     static var boundHeight: CGFloat = 0
@@ -33,18 +33,18 @@ class Settings {
     
     
     static var cardEdge: CGFloat{
-        return (boundHeight - interItemInset * CGFloat(ElementsPerRowAndColumn[stage - 1][2] + 1) - CGFloat(boundHeight/4)) / CGFloat(ElementsPerRowAndColumn[stage - 1][2])
+        return (boundHeight - interItemInset * CGFloat(ElementsPerRowAndColumn[level - 1][2] + 1) - CGFloat(boundHeight/4)) / CGFloat(ElementsPerRowAndColumn[level - 1][2])
         
     }
     
     
     static var widthConstant: CGFloat {
-        return CGFloat(ElementsPerRowAndColumn[stage - 1][1])*(cardEdge + interItemInset)
+        return CGFloat(ElementsPerRowAndColumn[level - 1][1])*(cardEdge + interItemInset)
     }
         
  
     static var heightConstant: CGFloat {
-        return CGFloat(ElementsPerRowAndColumn[stage - 1][2]) * ( cardEdge + interItemInset)
+        return CGFloat(ElementsPerRowAndColumn[level - 1][2]) * ( cardEdge + interItemInset)
     }
 
 }

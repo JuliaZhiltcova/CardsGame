@@ -24,9 +24,35 @@ class GameViewController: UIViewController {
     
     var effect: UIVisualEffect!
     let reuseIdentifier = "cardCell"
-    let game = Game()
     
-    var level: Int?
+    var game: Game!
+    var layout: CenterAlignedCollectionViewFlowLayout?
+    
+    
+    @IBAction func backToLevelsButton(_ sender: UIButton) {
+      
+      
+           game.finishGame()
+         //  let levelVC = self.storyboard?.instantiateViewController(withIdentifier: "levelVC") as! LevelViewController
+         //  self.navigationController?.pushViewController(levelVC, animated: true)
+       
+       
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers ;
+        
+        for aViewController in viewControllers {
+            if(aViewController is LevelViewController){
+                self.navigationController?.popToViewController(aViewController, animated: true);
+            }
+        }
+       
+        
+        
+        /*
+        if let nc = self.navigationController {
+            nc.popViewController(animated: true)
+        }*/
+        
+       }
     
     @IBAction func backToGameButton(_ sender: UIButton) {
         runTimer()
@@ -50,10 +76,7 @@ class GameViewController: UIViewController {
         timer.invalidate()
         animateIn()
     }
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,14 +88,16 @@ class GameViewController: UIViewController {
         
         effect = visualEffectView.effect
         visualEffectView.effect = nil
-        
+       
+        layout = cardsCollectionView.collectionViewLayout as? CenterAlignedCollectionViewFlowLayout
+        //layout?.level = game.level
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Settings.boundWidth = self.view.bounds.width
-        Settings.boundHeight = self.view.bounds.height
+        layout?.boundWidth = self.view.bounds.width
+        layout?.boundHeight = self.view.bounds.height
         
         game.startNewGame()
     }
@@ -87,9 +112,9 @@ class GameViewController: UIViewController {
         let horizontalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
         let verticalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
         
-        let widthConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: Settings.widthConstant)
+        let widthConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (layout?.widthConstant)!)
         
-        let heightConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: Settings.heightConstant)
+        let heightConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (layout?.heightConstant)!)
         
         view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
         cardsCollectionView.backgroundColor = UIColor.green
@@ -221,6 +246,14 @@ extension GameViewController: CardsGame {
     
     func gameDidEnd(){
         timer.invalidate()
+    }
+  
+    
+    func goToNextLevel(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "endOfGameVC") as! EndOfGameController
+    
+       // vc.currentTimeOfLevel =
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

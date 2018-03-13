@@ -13,12 +13,32 @@ class Level{
     let numberOfLevel: Int
     let image: UIImage
     
-   // let bestTime: Int     // in seconds
+    //let bestTime: TimeInterval     // in seconds
     
     
     init(numberOfLevel: Int, imageName: String) {
         self.numberOfLevel = numberOfLevel
         self.image = UIImage(named: imageName)!
     }
+    
+    lazy var currentGame: Game = Game(level: self.numberOfLevel)
+    
+    static var currentLevel: Int = 0
+    
+//
+//    
+//    private var currentGame_: Game?
+//    
+//    static func initGame(типИгры:Int, левел:Int) {
+//        //
+//        
+//        var theCosOfZero: Double = Double(cos(0))  // theCosOfZero equals 1
+//    }
+//    
+//    var currentGame: Game? {
+//        get {
+//            return currentGame_
+//        }
+//    }
 
 }
