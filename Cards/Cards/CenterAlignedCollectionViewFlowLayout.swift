@@ -31,7 +31,7 @@ class CenterAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
     //    _ = CenterAlignedCollectionViewFlowLayout.isThereNextLevel(currentLevel: 8)
     //}
     
-    var level = Level.currentLevel
+    var level = Level.currentLevel!.number
     var cardEdge: CGFloat{
         return (boundHeight - interItemInset * CGFloat(GameSettings.ElementsPerRowAndColumn[level - 1][2] + 1) - CGFloat(boundHeight/4)) / CGFloat(GameSettings.ElementsPerRowAndColumn[level - 1][2])
     }

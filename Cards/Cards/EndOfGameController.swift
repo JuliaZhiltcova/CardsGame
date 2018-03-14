@@ -20,10 +20,10 @@ class EndOfGameController: UIViewController {
     
     @IBAction func goToNextLevelButton(_ sender: UIButton) {
         
-        if Level.currentLevel < GameSettings.ElementsPerRowAndColumn.count{
+        if (Level.currentLevel?.number)! < GameSettings.ElementsPerRowAndColumn.count{
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
-            Level.currentLevel += 1
-            vc.game = Game(level: Level.currentLevel)
+            Level.currentLevel?.number += 1
+            vc.game = Game(level: (Level.currentLevel?.number)!)
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             

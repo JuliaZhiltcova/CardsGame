@@ -10,20 +10,20 @@ import UIKit
 
 class Level{
 
-    let numberOfLevel: Int
+    var number: Int
     let image: UIImage
     
     //let bestTime: TimeInterval     // in seconds
     
     
-    init(numberOfLevel: Int, imageName: String) {
-        self.numberOfLevel = numberOfLevel
+    init(number: Int, imageName: String) {
+        self.number = number
         self.image = UIImage(named: imageName)!
     }
     
-    lazy var currentGame: Game = Game(level: self.numberOfLevel)
+    lazy var currentGame: Game = Game(level: self.number)
     
-    static var currentLevel: Int = 0
+    static var currentLevel: Level?
     
 //
 //    

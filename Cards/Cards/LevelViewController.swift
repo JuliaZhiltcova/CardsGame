@@ -35,11 +35,7 @@ class LevelViewController: UIViewController  {
         let layout = /*collectionViewLayout as! */ levelCollectonView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width + heightAdjastment)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-       // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
 
     }
     
@@ -47,7 +43,7 @@ class LevelViewController: UIViewController  {
     
     func createLevels(){
         for number in 0..<GameSettings.ElementsPerRowAndColumn.count { 
-            let level = Level(numberOfLevel: number + 1, imageName: "l\(number)")
+            let level = Level(number: number + 1, imageName: "l\(number)")
             levels.append(level)
         }
 
@@ -90,7 +86,7 @@ extension LevelViewController: UICollectionViewDataSource{
         
         let level = levels[indexPath.row]
         cell.levelImage.image = level.image
-        cell.bestTimeLabel.text = String(level.numberOfLevel)
+        cell.bestTimeLabel.text = String(level.number)
         
         return cell
     }
@@ -104,7 +100,7 @@ extension LevelViewController: UICollectionViewDelegate{
         
 //        Level.currentLevel = levels[indexPath.row]
 //        vc.game = Level.currentLevel.currentGame
-        Level.currentLevel = levels[indexPath.row].numberOfLevel
+        Level.currentLevel = levels[indexPath.row]
         vc.game = levels[indexPath.row].currentGame
         self.navigationController?.pushViewController(vc, animated: true)
         
