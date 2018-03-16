@@ -37,11 +37,11 @@ class GameViewController: UIViewController {
          //  self.navigationController?.pushViewController(levelVC, animated: true)
        
        
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers ;
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
         
         for aViewController in viewControllers {
-            if(aViewController is LevelViewController){
-                self.navigationController?.popToViewController(aViewController, animated: true);
+            if aViewController is LevelViewController {
+                _ = self.navigationController!.popToViewController(aViewController, animated: true)
             }
         }
        
@@ -139,8 +139,9 @@ class GameViewController: UIViewController {
     
     func flipOverAllHiddenCards(isPenalty addTime: Bool, completion: (() -> ())? = nil) {
         
+    
         let faceDownCards = getFaceDownCards()
-        
+        cardsCollectionView.isUserInteractionEnabled = false
         CATransaction.begin()
         CATransaction.setCompletionBlock({
             
@@ -154,6 +155,7 @@ class GameViewController: UIViewController {
                 else {
                     self.runTimer()
                 }
+                self.cardsCollectionView.isUserInteractionEnabled = true
             })
             
             faceDownCards.forEach { cell in
@@ -161,7 +163,10 @@ class GameViewController: UIViewController {
             }
             
             CATransaction.commit()
+            
         })
+        
+       
         
         faceDownCards.forEach { cell in
             cell.prepareFlipToFaceAnimation()
@@ -169,7 +174,7 @@ class GameViewController: UIViewController {
         
         
         CATransaction.commit()
-        
+     
     }
     
     func getFaceDownCards() -> [CardViewCell]{
@@ -199,6 +204,14 @@ class GameViewController: UIViewController {
         
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination
+        if let endOfGameController = destinationViewController as? EndOfGameController,
+            segue.identifier == "showEndOfGameController"{
+            endOfGameController.currentTimeOfLevel = seconds
+        }
     }
 }
 
@@ -250,10 +263,31 @@ extension GameViewController: CardsGame {
   
     
     func goToNextLevel(){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "endOfGameVC") as! EndOfGameController
-    
-       // vc.currentTimeOfLevel =
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "endOfGameVC") as! EndOfGameController
+            
+            if LevelsManager.currentLevel?.bestTime == nil {        // first time game
+                LevelsManager.currentLevel?.bestTime = self.seconds
+                
+            } else {
+                
+                if self.seconds <= (LevelsManager.currentLevel?.bestTime)! {
+                    LevelsManager.currentLevel?.bestTime = self.seconds
+                }
+            }
+            
+            vc.currentTimeOfLevel = self.seconds
+            vc.bestTimeOfLevel = LevelsManager.currentLevel?.bestTime
+            
+            
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: LevelsManager.levels)
+            UserDefaults.standard.set(encodedData, forKey: "levels")
+            UserDefaults.standard.synchronize()
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+
     }
 }
 

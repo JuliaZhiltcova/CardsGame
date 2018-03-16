@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840953BE205AF55B004D822A /* LevelsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840953BD205AF55B004D822A /* LevelsManager.swift */; };
 		840B7CDF204C2F5A009BE583 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CDE204C2F5A009BE583 /* LevelViewController.swift */; };
 		840B7CE1204C2FA7009BE583 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CE0204C2FA7009BE583 /* Level.swift */; };
 		840B7CE3204C3221009BE583 /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CE2204C3221009BE583 /* LevelViewCell.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		840953BD205AF55B004D822A /* LevelsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsManager.swift; sourceTree = "<group>"; };
 		840B7CDE204C2F5A009BE583 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		840B7CE0204C2FA7009BE583 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		840B7CE2204C3221009BE583 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
@@ -79,12 +81,13 @@
 				840FA312201F0F8A007B4958 /* AppDelegate.swift */,
 				841790FE205050B90002582D /* EndOfGameController.swift */,
 				840FA314201F0F8A007B4958 /* GameViewController.swift */,
-				840B7CE2204C3221009BE583 /* LevelViewCell.swift */,
-				840B7CDE204C2F5A009BE583 /* LevelViewController.swift */,
-				840CBFD020584C2B007D9033 /* GameSettings.swift */,
+				840953BD205AF55B004D822A /* LevelsManager.swift */,
 				8466F1852034B9E300C4D351 /* Game.swift */,
-				840FA316201F0F8A007B4958 /* Main.storyboard */,
+				840B7CDE204C2F5A009BE583 /* LevelViewController.swift */,
 				840B7CE0204C2FA7009BE583 /* Level.swift */,
+				840B7CE2204C3221009BE583 /* LevelViewCell.swift */,
+				840CBFD020584C2B007D9033 /* GameSettings.swift */,
+				840FA316201F0F8A007B4958 /* Main.storyboard */,
 				8447AE60203C8772006A9C30 /* DesignableView.swift */,
 				840DDD0F202C9AB700094903 /* ArrayExtention.swift */,
 				840FA319201F0F8A007B4958 /* Assets.xcassets */,
@@ -173,6 +176,7 @@
 				840B7CE1204C2FA7009BE583 /* Level.swift in Sources */,
 				840CBFD120584C2B007D9033 /* GameSettings.swift in Sources */,
 				841790FF205050B90002582D /* EndOfGameController.swift in Sources */,
+				840953BE205AF55B004D822A /* LevelsManager.swift in Sources */,
 				840B7CDF204C2F5A009BE583 /* LevelViewController.swift in Sources */,
 				840FA325201F1403007B4958 /* Card.swift in Sources */,
 				840B7CE3204C3221009BE583 /* LevelViewCell.swift in Sources */,

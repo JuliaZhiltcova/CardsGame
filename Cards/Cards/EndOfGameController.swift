@@ -12,32 +12,52 @@ class EndOfGameController: UIViewController {
 
     //var level: Int?
     
-    var currentTimeOfLevel: Int = 0
     @IBOutlet weak var bestTimeLabel: UILabel!
-    
     @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var evaluationLabel: UILabel!
     
+    var currentTimeOfLevel: Int?
+    var bestTimeOfLevel: Int?
     
     @IBAction func goToNextLevelButton(_ sender: UIButton) {
         
-        if (Level.currentLevel?.number)! < GameSettings.ElementsPerRowAndColumn.count{
+       /* if (LevelsManager.currentLevel?.number)! < GameSettings.ElementsPerRowAndColumn.count{
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
-            Level.currentLevel?.number += 1
-            vc.game = Game(level: (Level.currentLevel?.number)!)
+            LevelsManager.currentLevel?.number += 1
+            vc.game = Game(level: (LevelsManager.currentLevel?.number)!)
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "levelVC") as! LevelViewController
             self.navigationController?.pushViewController(vc, animated: true)
             
+        } */
+        
+        if LevelsManager.isItLastLevel(level: LevelsManager.currentLevel!){
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "levelVC") as! LevelViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            LevelsManager.goToNextLevelAfter(level: LevelsManager.currentLevel!)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
+            vc.game = Game(level: (LevelsManager.currentLevel?.number)!)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        if let currentTimeOfLevel = currentTimeOfLevel,
+            let bestTimeOfLevel = bestTimeOfLevel {
+            
+            evaluationLabel.text = (currentTimeOfLevel < bestTimeOfLevel) ? "Great!" : "Try again"
 
-        // Do any additional setup after loading the view.
+            
+            currentTimeLabel.text = "Время уровня: \(currentTimeOfLevel)"
+            bestTimeLabel.text = "Лучшее время: \(bestTimeOfLevel)"
+        }
     }
 
     override func didReceiveMemoryWarning() {

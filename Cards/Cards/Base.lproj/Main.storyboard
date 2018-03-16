@@ -48,6 +48,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="I9R-qg-0F2">
+                                                    <rect key="frame" x="21" y="0.0" width="29" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -59,6 +63,7 @@
                                         <connections>
                                             <outlet property="bestTimeLabel" destination="cYE-s7-ojo" id="xPR-CO-SVy"/>
                                             <outlet property="levelImage" destination="J8Z-yh-IQR" id="W8I-XA-7Mf"/>
+                                            <outlet property="lockImage" destination="I9R-qg-0F2" id="RaB-i7-FrN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -197,6 +202,7 @@
                         <outlet property="menuView" destination="bUc-E4-E4w" id="2QW-AN-n3R"/>
                         <outlet property="timerLabel" destination="jfb-Jc-jEW" id="QZ5-UF-MhA"/>
                         <outlet property="visualEffectView" destination="7RM-U7-wVo" id="cxk-BM-Nk5"/>
+                        <segue destination="bTU-PC-SsW" kind="show" identifier="showEndOfGameController" id="xlW-cS-PMq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AX-Xa-FOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -263,13 +269,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CurrentTimeLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNJ-GX-feo">
-                                <rect key="frame" x="166" y="206" width="314" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8l-II-xHn">
                                 <rect key="frame" x="300" y="257" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -278,12 +277,27 @@
                                     <action selector="goToNextLevelButton:" destination="bTU-PC-SsW" eventType="touchUpInside" id="Ug9-OC-sLs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nn4-Ss-Xxn">
+                                <rect key="frame" x="132" y="90" width="377" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CurrentTimeLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNJ-GX-feo">
+                                <rect key="frame" x="171" y="148" width="314" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="bestTimeLabel" destination="GtE-cd-o5a" id="DrG-Nt-ReZ"/>
                         <outlet property="currentTimeLabel" destination="PNJ-GX-feo" id="6yP-sx-ZhU"/>
+                        <outlet property="evaluationLabel" destination="nn4-Ss-Xxn" id="OXD-yX-gLn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSS-8x-R09" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -312,5 +326,6 @@
     <resources>
         <image name="eye" width="32" height="32"/>
         <image name="layer" width="32" height="32"/>
+        <image name="lock" width="16" height="16"/>
     </resources>
 </document>

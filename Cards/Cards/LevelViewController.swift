@@ -12,10 +12,12 @@ private let reuseIdentifier = "Cell"
 
 class LevelViewController: UIViewController  {
 
+
+    
+
     @IBOutlet weak var chooseLevelLabel: UILabel!
     @IBOutlet weak var levelCollectonView: UICollectionView!
     
-    var levels = [Level]()
     
     private let leftAndRightPaddings: CGFloat = 32.0
     private let numberOfItemsPerRow: CGFloat = 5.0
@@ -23,51 +25,30 @@ class LevelViewController: UIViewController  {
     
     let reuseIdentifier = "levelCell"
     
+    let levelsManager = LevelsManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         levelCollectonView.delegate = self
         levelCollectonView.dataSource = self
 
-        createLevels()
         
         let width = (levelCollectonView!.frame.width - leftAndRightPaddings) / numberOfItemsPerRow
-        let layout = /*collectionViewLayout as! */ levelCollectonView.collectionViewLayout as! UICollectionViewFlowLayout
+        let layout = levelCollectonView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width + heightAdjastment)
 
-        
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        levelCollectonView.reloadData()
     }
     
-
-    
-    func createLevels(){
-        for number in 0..<GameSettings.ElementsPerRowAndColumn.count { 
-            let level = Level(number: number + 1, imageName: "l\(number)")
-            levels.append(level)
-        }
-
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-
-    
 
 }
 
@@ -78,15 +59,16 @@ extension LevelViewController: UICollectionViewDataSource{
     }
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return levels.count
+        return LevelsManager.levels.count
     }
     
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LevelViewCell
         
-        let level = levels[indexPath.row]
+        let level = LevelsManager.levels[indexPath.row]
         cell.levelImage.image = level.image
-        cell.bestTimeLabel.text = String(level.number)
+        cell.bestTimeLabel.text = level.bestTime == nil ? "" : String(level.bestTime!)
+        cell.lockImage.isHidden = level.bestTime != nil
         
         return cell
     }
@@ -98,10 +80,14 @@ extension LevelViewController: UICollectionViewDelegate{
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
         
-//        Level.currentLevel = levels[indexPath.row]
-//        vc.game = Level.currentLevel.currentGame
-        Level.currentLevel = levels[indexPath.row]
-        vc.game = levels[indexPath.row].currentGame
+       // Level.currentLevel = LevelsManager.levels[indexPath.row]
+        
+
+        LevelsManager.currentLevel = LevelsManager.levels[indexPath.row]
+        
+       // print(Unmanaged<AnyObject>.passUnretained(LevelsManager.currentLevel as AnyObject).toOpaque())
+       // print(Unmanaged<AnyObject>.passUnretained(LevelsManager.levels[indexPath.row] as AnyObject).toOpaque())
+        vc.game = LevelsManager.levels[indexPath.row].currentGame
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
