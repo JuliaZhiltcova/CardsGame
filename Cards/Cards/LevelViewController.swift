@@ -67,7 +67,7 @@ extension LevelViewController: UICollectionViewDataSource{
         
         let level = LevelsManager.levels[indexPath.row]
         cell.levelImage.image = level.image
-        cell.bestTimeLabel.text = level.bestTime == nil ? "" : String(level.bestTime!)
+        cell.bestTimeLabel.text = level.bestTime == nil ? "" : level.bestTime!.textDescription
         cell.lockImage.isHidden = level.bestTime != nil
         
         return cell

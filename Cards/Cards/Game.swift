@@ -32,6 +32,38 @@ class Game{
     var numberOfCards: Int{
         return level * 2 + 2
     }
+    
+    private var _startGameTime: Date?
+    var startGameTime: Date? {
+        get {
+            return _startGameTime
+        }
+        set {
+            _startGameTime = newValue
+        }
+    }
+    
+    
+    var elapsedTime: TimeInterval?{
+        
+        get{
+            guard startGameTime != nil else { return -1 }
+            return Date().timeIntervalSince(startGameTime!)
+        }
+    }
+    
+    private var _endGameTime: TimeInterval?
+    var endGameTime: TimeInterval? {
+        get {
+            return _endGameTime
+        }
+        set {
+            _endGameTime = newValue
+        }
+    }
+    
+    
+    
     func createRandomCardsArray(){
         for card in 0..<numberOfCards/2{ //(Settings.ElementsPerRowAndColumn[level - 1][0]/2 ){
             let item = Card(id: card, name: "Img\(card)")
@@ -48,7 +80,6 @@ class Game{
     
     func startNewGame()  {
         createRandomCardsArray()
-
 //        cards.forEach { card in
 //            print("\(card.id) -- \(card.name) -- \(card.isFaceUp)" )
 //        }
@@ -64,7 +95,7 @@ class Game{
     func finishGame() {
         cards.removeAll()
         cardsOpened.removeAll()
-
+       // startGameTime = nil
         delegate?.gameDidEnd()
     }
     

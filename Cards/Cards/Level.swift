@@ -12,7 +12,7 @@ class Level: NSObject, NSCoding {
 
     var number: Int
     var image: UIImage
-    var bestTime: Int? //TimeInterval     // in seconds
+    var bestTime: TimeInterval? //TimeInterval     // in seconds
     
     let levelImageNames: [Int: String] = [
         1: "l1",
@@ -27,7 +27,7 @@ class Level: NSObject, NSCoding {
         10: "l10"
     ]
     
-    init(number: Int, bestTime: Int? = nil) {
+    init(number: Int, bestTime: TimeInterval? = nil) {
         self.number = number
         self.image = UIImage(named: levelImageNames[number]!)!
         self.bestTime = bestTime
@@ -35,7 +35,7 @@ class Level: NSObject, NSCoding {
     
     required  convenience init?(coder decoder: NSCoder) {
         let number = decoder.decodeInt64(forKey: "number")
-        let bestTime = decoder.decodeObject(forKey: "bestTime") as? Int
+        let bestTime = decoder.decodeObject(forKey: "bestTime") as? TimeInterval
 
         
         self.init(

@@ -11,16 +11,21 @@ import UIKit
 class GameViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: UILabel!
-    var seconds = 0
+
+    
     var timer = Timer()
     var isTimerRunning = false
-
+    private var startHintTime: Date?
+    private var endHintTime: Date?
     
     @IBOutlet weak var cardsCollectionView: UICollectionView!
     @IBOutlet weak var gameContentView: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
     @IBOutlet var menuView: UIView!
+    @IBOutlet var addTimeView: UIView!
+    
+    
     
     var effect: UIVisualEffect!
     let reuseIdentifier = "cardCell"
@@ -68,6 +73,7 @@ class GameViewController: UIViewController {
 
     @IBAction func hintButton(_ sender: UIButton) {
         timer.invalidate()
+        startHintTime = Date()
         flipOverAllHiddenCards(isPenalty: true)
     }
     
@@ -103,7 +109,6 @@ class GameViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-
         flipOverAllHiddenCards(isPenalty: false)
     }
     
@@ -148,11 +153,15 @@ class GameViewController: UIViewController {
             CATransaction.begin()
             CATransaction.setCompletionBlock({
                 if addTime {
-                    self.seconds += 30
-                    self.timerLabel.text = self.timeString(time: TimeInterval(self.seconds))
-                    self.runTimer()
+                    self.animateAddTimeView()
+//                    self.endHintTime = Date()
+//                    let hintTimeInterval = self.endHintTime!.timeIntervalSince(self.startHintTime!)
+//                    self.game.startGameTime = self.game.startGameTime?.addingTimeInterval(-30 + hintTimeInterval)
+//                    self.timerLabel.text = self.game.elapsedTime?.textDescription
+//                    self.runTimer()
                 }
                 else {
+                    self.game.startGameTime = Date.init()
                     self.runTimer()
                 }
                 self.cardsCollectionView.isUserInteractionEnabled = true
@@ -165,8 +174,6 @@ class GameViewController: UIViewController {
             CATransaction.commit()
             
         })
-        
-       
         
         faceDownCards.forEach { cell in
             cell.prepareFlipToFaceAnimation()
@@ -192,25 +199,38 @@ class GameViewController: UIViewController {
     }
     
     func updateTimer(){
-        seconds += 1
-        timerLabel.text = timeString(time: TimeInterval(seconds)) //"\(seconds)"
+        timerLabel.text = game.elapsedTime?.textDescription
     }
     
-    func timeString(time: TimeInterval) -> String {
-        
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        
-        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
-        
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination
         if let endOfGameController = destinationViewController as? EndOfGameController,
             segue.identifier == "showEndOfGameController"{
-            endOfGameController.currentTimeOfLevel = seconds
+            endOfGameController.currentTimeOfLevel = game.elapsedTime
+        }
+    }
+    
+    func animateAddTimeView(){
+        self.view.addSubview(addTimeView)
+        addTimeView.center = timerLabel.center
+        
+        addTimeView.transform =  CGAffineTransform(scaleX: 0.5, y: 0.5)    //.identity
+
+
+        UIView.animate(withDuration: 3.0, animations: {
+            self.addTimeView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }) { success in
+            UIView.animate(withDuration: 1.0, animations: {
+                self.endHintTime = Date()
+                let hintTimeInterval = self.endHintTime!.timeIntervalSince(self.startHintTime!)
+                self.game.startGameTime = self.game.startGameTime?.addingTimeInterval(-30 + hintTimeInterval)
+                self.timerLabel.text = self.game.elapsedTime?.textDescription
+                self.runTimer()
+                self.addTimeView.removeFromSuperview()
+            })
+            
         }
     }
 }
@@ -253,12 +273,14 @@ extension GameViewController: CardsGame {
     func gameDidStart() {
         cardsCollectionView.reloadData()
         timer.invalidate()
-        seconds = 0
+        game.startGameTime = nil
         timerLabel.text = "00 : 00 : 00"
     }
     
     func gameDidEnd(){
         timer.invalidate()
+       // guard game.elapsedTime != nil else { return }
+        game.endGameTime = game.elapsedTime
     }
   
     
@@ -268,16 +290,16 @@ extension GameViewController: CardsGame {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "endOfGameVC") as! EndOfGameController
             
             if LevelsManager.currentLevel?.bestTime == nil {        // first time game
-                LevelsManager.currentLevel?.bestTime = self.seconds
+                LevelsManager.currentLevel?.bestTime = self.game.endGameTime //self.seconds
                 
             } else {
                 
-                if self.seconds <= (LevelsManager.currentLevel?.bestTime)! {
-                    LevelsManager.currentLevel?.bestTime = self.seconds
+                if self.game.endGameTime! <= (LevelsManager.currentLevel?.bestTime)! {
+                    LevelsManager.currentLevel?.bestTime = self.game.endGameTime
                 }
             }
             
-            vc.currentTimeOfLevel = self.seconds
+            vc.currentTimeOfLevel = self.game.endGameTime
             vc.bestTimeOfLevel = LevelsManager.currentLevel?.bestTime
             
             

@@ -16,8 +16,8 @@ class EndOfGameController: UIViewController {
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var evaluationLabel: UILabel!
     
-    var currentTimeOfLevel: Int?
-    var bestTimeOfLevel: Int?
+    var currentTimeOfLevel: TimeInterval?
+    var bestTimeOfLevel: TimeInterval?
     
     @IBAction func goToNextLevelButton(_ sender: UIButton) {
         
@@ -52,11 +52,11 @@ class EndOfGameController: UIViewController {
         if let currentTimeOfLevel = currentTimeOfLevel,
             let bestTimeOfLevel = bestTimeOfLevel {
             
-            evaluationLabel.text = (currentTimeOfLevel < bestTimeOfLevel) ? "Great!" : "Try again"
+            evaluationLabel.text = (currentTimeOfLevel <= bestTimeOfLevel) ?  "Great!" : "Try again"
 
             
-            currentTimeLabel.text = "Время уровня: \(currentTimeOfLevel)"
-            bestTimeLabel.text = "Лучшее время: \(bestTimeOfLevel)"
+            currentTimeLabel.text = "Время уровня: \(currentTimeOfLevel.textDescription)"
+            bestTimeLabel.text = "Лучшее время: \(bestTimeOfLevel.textDescription)"
         }
     }
 

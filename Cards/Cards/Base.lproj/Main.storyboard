@@ -42,7 +42,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYE-s7-ojo">
-                                                    <rect key="frame" x="27" y="68" width="42" height="21"/>
+                                                    <rect key="frame" x="27" y="68" width="102" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -197,6 +197,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="addTimeView" destination="1cp-81-oNs" id="Xp9-6i-Tve"/>
                         <outlet property="cardsCollectionView" destination="6av-eA-ZN6" id="Rf9-63-awd"/>
                         <outlet property="gameContentView" destination="ACo-hd-gfJ" id="1XS-F5-ieK"/>
                         <outlet property="menuView" destination="bUc-E4-E4w" id="2QW-AN-n3R"/>
@@ -206,6 +207,17 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AX-Xa-FOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="1cp-81-oNs">
+                    <rect key="frame" x="0.0" y="0.0" width="138" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="l10" translatesAutoresizingMaskIntoConstraints="NO" id="eEs-cQ-faG">
+                            <rect key="frame" x="0.0" y="0.0" width="138" height="50"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" id="bUc-E4-E4w" customClass="DesignableView" customModule="Cards" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="293" height="197"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -325,6 +337,7 @@
     </scenes>
     <resources>
         <image name="eye" width="32" height="32"/>
+        <image name="l10" width="32" height="32"/>
         <image name="layer" width="32" height="32"/>
         <image name="lock" width="16" height="16"/>
     </resources>

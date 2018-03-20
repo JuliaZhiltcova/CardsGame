@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8407AA8220602635002BB720 /* TimeIntervalExtantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407AA8120602635002BB720 /* TimeIntervalExtantion.swift */; };
 		840953BE205AF55B004D822A /* LevelsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840953BD205AF55B004D822A /* LevelsManager.swift */; };
 		840B7CDF204C2F5A009BE583 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CDE204C2F5A009BE583 /* LevelViewController.swift */; };
 		840B7CE1204C2FA7009BE583 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CE0204C2FA7009BE583 /* Level.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8407AA8120602635002BB720 /* TimeIntervalExtantion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtantion.swift; sourceTree = "<group>"; };
 		840953BD205AF55B004D822A /* LevelsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsManager.swift; sourceTree = "<group>"; };
 		840B7CDE204C2F5A009BE583 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		840B7CE0204C2FA7009BE583 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				840B7CE2204C3221009BE583 /* LevelViewCell.swift */,
 				840CBFD020584C2B007D9033 /* GameSettings.swift */,
 				840FA316201F0F8A007B4958 /* Main.storyboard */,
+				8407AA8120602635002BB720 /* TimeIntervalExtantion.swift */,
 				8447AE60203C8772006A9C30 /* DesignableView.swift */,
 				840DDD0F202C9AB700094903 /* ArrayExtention.swift */,
 				840FA319201F0F8A007B4958 /* Assets.xcassets */,
@@ -183,6 +186,7 @@
 				843F280D20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
 				840FA327201F1835007B4958 /* CardViewCell.swift in Sources */,
 				8466F1862034B9E300C4D351 /* Game.swift in Sources */,
+				8407AA8220602635002BB720 /* TimeIntervalExtantion.swift in Sources */,
 				840DDD10202C9AB700094903 /* ArrayExtention.swift in Sources */,
 				8447AE61203C8772006A9C30 /* DesignableView.swift in Sources */,
 				840FA313201F0F8A007B4958 /* AppDelegate.swift in Sources */,
