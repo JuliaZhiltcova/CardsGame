@@ -18,10 +18,11 @@ class LevelViewController: UIViewController  {
     @IBOutlet weak var chooseLevelLabel: UILabel!
     @IBOutlet weak var levelCollectonView: UICollectionView!
     
+    fileprivate let insets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    fileprivate let itemsPerRow: CGFloat = 5.0
     
-    private let leftAndRightPaddings: CGFloat = 32.0
-    private let numberOfItemsPerRow: CGFloat = 5.0
-    private let heightAdjastment: CGFloat = 30.0
+    //private let leftAndRightPaddings: CGFloat = 32.0
+    //private let heightAdjastment: CGFloat = 30.0
     
     let reuseIdentifier = "levelCell"
     
@@ -34,9 +35,9 @@ class LevelViewController: UIViewController  {
         levelCollectonView.dataSource = self
 
         
-        let width = (levelCollectonView!.frame.width - leftAndRightPaddings) / numberOfItemsPerRow
-        let layout = levelCollectonView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width + heightAdjastment)
+   //     let width = (levelCollectonView!.frame.width - leftAndRightPaddings) / numberOfItemsPerRow
+   //     let layout = levelCollectonView.collectionViewLayout as! UICollectionViewFlowLayout
+   //     layout.itemSize = CGSize(width: width, height: width)
 
     }
 
@@ -94,6 +95,25 @@ extension LevelViewController: UICollectionViewDelegate{
 }
 
 
+extension LevelViewController : UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let paddingSpace = insets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return insets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return insets.left
+    }
+}
 
 
 //override func viewWillLayoutSubviews() {
