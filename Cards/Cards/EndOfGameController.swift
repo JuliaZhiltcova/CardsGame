@@ -58,14 +58,14 @@ class EndOfGameController: UIViewController {
         if let currentTimeOfLevel = currentTimeOfLevel,
             let bestTimeOfLevel = bestTimeOfLevel {
             
-            evaluationLabel.strockedText = (currentTimeOfLevel <= bestTimeOfLevel) ?  "Великолепно!" : "Попробуйте еще раз"
+            evaluationLabel.strockedText = (currentTimeOfLevel <= bestTimeOfLevel) ?  NSLocalizedString("Great!", comment: "Great!") : NSLocalizedString("Please try again", comment: "Please try again")
 
             
-            currentTimeLabel.strockedText = "Время уровня: \(currentTimeOfLevel.textDescription)"
-            bestTimeLabel.strockedText = "Лучшее время: \(bestTimeOfLevel.textDescription)"
+            currentTimeLabel.strockedText = "\(NSLocalizedString("Time of the level:", comment: "Time of the level:")) \(currentTimeOfLevel.textDescription)"
+            bestTimeLabel.strockedText = "\(NSLocalizedString("Best time:", comment: "Best time:")) \(bestTimeOfLevel.textDescription)"
         }
         
-        levelCompleteLabel.strockedText = "УРОВЕНЬ ОКОНЧЕН"
+        levelCompleteLabel.strockedText = NSLocalizedString("Level complete", comment: "Level complete")
         lezardImageView2.transform = CGAffineTransform(scaleX: -1, y: 1)
     }
 
@@ -122,19 +122,13 @@ class EndOfGameController: UIViewController {
         goToNextLevelButton.translatesAutoresizingMaskIntoConstraints = false
         goToNextLevelButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
         goToNextLevelButton.centerYAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -self.view.bounds.height/7).isActive = true
-        goToNextLevelButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        goToNextLevelButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         goToNextLevelButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         
         let lezardImageViewHeight = self.view.bounds.height * 0.8
-        var lezardImageViewWidth: CGFloat!
-        switch UIDevice.current.userInterfaceIdiom{
-        case .pad:
-            lezardImageViewWidth = self.view.bounds.width * 0.25
-        case .phone:
-            lezardImageViewWidth = self.view.bounds.width * 0.2
-        default: break;
-        }
+        let lezardImageViewWidth = self.view.bounds.width * 0.2
+        
         lezardImageView1.translatesAutoresizingMaskIntoConstraints = false
         lezardImageView1.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         lezardImageView1.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true

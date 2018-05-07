@@ -1,0 +1,39 @@
+/* Class = "UIButton"; normalTitle = "Hint"; ObjectID = "2Kl-Dk-tvV"; */
+"2Kl-Dk-tvV.normalTitle" = "Подсказка";
+
+/* Class = "UIButton"; normalTitle = "next"; ObjectID = "C8l-II-xHn"; */
+"C8l-II-xHn.normalTitle" = "Вперед";
+
+/* Class = "UIButton"; normalTitle = "sound"; ObjectID = "FJH-in-sb1"; */
+"FJH-in-sb1.normalTitle" = "Звук";
+
+/* Class = "UIButton"; normalTitle = "Menu"; ObjectID = "GJE-RX-Mhd"; */
+"GJE-RX-Mhd.normalTitle" = "Меню";
+
+/* Class = "UILabel"; text = "BestTimeLabel"; ObjectID = "GtE-cd-o5a"; */
+"GtE-cd-o5a.text" = "BestTimeLabel";
+
+/* Class = "UILabel"; text = "CurrentTimeLabel"; ObjectID = "PNJ-GX-feo"; */
+"PNJ-GX-feo.text" = "CurrentTimeLabel";
+
+/* Class = "UIButton"; normalTitle = "Exit"; ObjectID = "PPh-FE-Ieh"; */
+"PPh-FE-Ieh.normalTitle" = "Выход";
+
+/* Class = "UIButton"; normalTitle = "Back to game"; ObjectID = "XBV-WX-pZP"; */
+"XBV-WX-pZP.normalTitle" = "Назад в игру";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cYE-s7-ojo"; */
+"cYE-s7-ojo.text" = "Label";
+
+/* Class = "UILabel"; text = "00 : 00 : 00"; ObjectID = "jfb-Jc-jEW"; */
+"jfb-Jc-jEW.text" = "00 : 00 : 00";
+
+/* Class = "UILabel"; text = "level complete"; ObjectID = "mLn-y1-dYs"; */
+"mLn-y1-dYs.text" = "Уровень пройден";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nn4-Ss-Xxn"; */
+"nn4-Ss-Xxn.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Restart"; ObjectID = "xLX-xC-ELP"; */
+"xLX-xC-ELP.normalTitle" = "Сыграть заново";
+

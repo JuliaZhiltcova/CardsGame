@@ -23,6 +23,8 @@
 		840FA31D201F0F8A007B4958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840FA31B201F0F8A007B4958 /* LaunchScreen.storyboard */; };
 		840FA325201F1403007B4958 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA324201F1403007B4958 /* Card.swift */; };
 		840FA327201F1835007B4958 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA326201F1835007B4958 /* CardViewCell.swift */; };
+		84140BE820A0D6AF003C4990 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84140BEA20A0D6AF003C4990 /* InfoPlist.strings */; };
+		84140BED20A0D6AF003C4990 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84140BEF20A0D6AF003C4990 /* Localizable.strings */; };
 		841790FF205050B90002582D /* EndOfGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841790FE205050B90002582D /* EndOfGameController.swift */; };
 		843F280D20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F280C20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift */; };
 		8447AE61203C8772006A9C30 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447AE60203C8772006A9C30 /* DesignableView.swift */; };
@@ -52,6 +54,10 @@
 		840FA31E201F0F8A007B4958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840FA324201F1403007B4958 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		840FA326201F1835007B4958 /* CardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		84140BE520A0CC11003C4990 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		84140BE920A0D6AF003C4990 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84140BEE20A0D6AF003C4990 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84140BF020A0D6B0003C4990 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		841790FE205050B90002582D /* EndOfGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndOfGameController.swift; sourceTree = "<group>"; };
 		843F280C20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		8447AE60203C8772006A9C30 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -91,6 +97,8 @@
 		840FA311201F0F8A007B4958 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				84140BEF20A0D6AF003C4990 /* Localizable.strings */,
+				84140BEA20A0D6AF003C4990 /* InfoPlist.strings */,
 				840FA312201F0F8A007B4958 /* AppDelegate.swift */,
 				841790FE205050B90002582D /* EndOfGameController.swift */,
 				840D82A420643C6A002F3363 /* AdverGothic Ho.ttf */,
@@ -180,7 +188,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				840CC018207694C900CC4801 /* EjaRound.ttf in Resources */,
+				84140BE820A0D6AF003C4990 /* InfoPlist.strings in Resources */,
 				840FA31D201F0F8A007B4958 /* LaunchScreen.storyboard in Resources */,
+				84140BED20A0D6AF003C4990 /* Localizable.strings in Resources */,
 				840FA31A201F0F8A007B4958 /* Assets.xcassets in Resources */,
 				840FA318201F0F8A007B4958 /* Main.storyboard in Resources */,
 				845405BD2091D1B1005413C3 /* EjaRoundFilled.ttf in Resources */,
@@ -222,6 +232,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				840FA317201F0F8A007B4958 /* Base */,
+				84140BE520A0CC11003C4990 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -230,8 +241,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				840FA31C201F0F8A007B4958 /* Base */,
+				84140BF020A0D6B0003C4990 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		84140BEA20A0D6AF003C4990 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84140BE920A0D6AF003C4990 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		84140BEF20A0D6AF003C4990 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84140BEE20A0D6AF003C4990 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -241,6 +269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -291,6 +320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

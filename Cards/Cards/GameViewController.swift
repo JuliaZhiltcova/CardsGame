@@ -415,16 +415,16 @@ extension GameViewController {
         switch UIDevice.current.userInterfaceIdiom{
         case .pad:
 
-            backToGameButton.setCustomAttributedTitle(title: "Назад в игру", fontSize: 50)
-            playAgainButton.setCustomAttributedTitle(title: "Сыграть заново", fontSize: 50)
-            quitButton.setCustomAttributedTitle(title: "Выход", fontSize: 50)
-            soundButton.setCustomAttributedTitle(title: "Звук", fontSize: 50)
+            backToGameButton.setCustomAttributedTitle(title: NSLocalizedString("Back to game", comment: "Back to game"), fontSize: 50)
+            playAgainButton.setCustomAttributedTitle(title: NSLocalizedString("Restart", comment: "Play again"), fontSize: 50)
+            quitButton.setCustomAttributedTitle(title: NSLocalizedString("Exit", comment: "Quit"), fontSize: 50)
+            soundButton.setCustomAttributedTitle(title: NSLocalizedString("Sound", comment: "Sound"), fontSize: 50)
         case .phone:
 
-            backToGameButton.setCustomAttributedTitle(title: "Назад в игру", fontSize: 30)
-            playAgainButton.setCustomAttributedTitle(title: "Сыграть заново", fontSize: 30)
-            quitButton.setCustomAttributedTitle(title: "Выход", fontSize: 30)
-            soundButton.setCustomAttributedTitle(title: "Звук", fontSize: 30)
+            backToGameButton.setCustomAttributedTitle(title: NSLocalizedString("Back to game", comment: "Back to game"), fontSize: 30)
+            playAgainButton.setCustomAttributedTitle(title: NSLocalizedString("Restart", comment: "Play again"), fontSize: 30)
+            quitButton.setCustomAttributedTitle(title: NSLocalizedString("Exit", comment: "Quit"), fontSize: 30)
+            soundButton.setCustomAttributedTitle(title: NSLocalizedString("Sound", comment: "Sound"), fontSize: 30)
         default: break;
         }
         

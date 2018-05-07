@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Cards/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body/>
+  </file>
+  <file original="Cards/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body>
+      <trans-unit id="2Kl-Dk-tvV.normalTitle">
+        <source>Hint</source>
+        <target>Подсказка</target>
+        <note>Class = "UIButton"; normalTitle = "Hint"; ObjectID = "2Kl-Dk-tvV";</note>
+      </trans-unit>
+      <trans-unit id="C8l-II-xHn.normalTitle">
+        <source>next level</source>
+        <target>Вперед</target>
+        <note>Class = "UIButton"; normalTitle = "next level"; ObjectID = "C8l-II-xHn";</note>
+      </trans-unit>
+      <trans-unit id="FJH-in-sb1.normalTitle">
+        <source>sound</source>
+        <target>Звук</target>
+        <note>Class = "UIButton"; normalTitle = "sound"; ObjectID = "FJH-in-sb1";</note>
+      </trans-unit>
+      <trans-unit id="GJE-RX-Mhd.normalTitle">
+        <source>Menu</source>
+        <target>Меню</target>
+        <note>Class = "UIButton"; normalTitle = "Menu"; ObjectID = "GJE-RX-Mhd";</note>
+      </trans-unit>
+      <trans-unit id="GtE-cd-o5a.text">
+        <source>BestTimeLabel</source>
+        <target>BestTimeLabel</target>
+        <note>Class = "UILabel"; text = "BestTimeLabel"; ObjectID = "GtE-cd-o5a";</note>
+      </trans-unit>
+      <trans-unit id="Jcv-ZA-y9R.text">
+        <source>CHOOSE LEVEL</source>
+        <target>CHOOSE LEVEL</target>
+        <note>Class = "UILabel"; text = "CHOOSE LEVEL"; ObjectID = "Jcv-ZA-y9R";</note>
+      </trans-unit>
+      <trans-unit id="PNJ-GX-feo.text">
+        <source>CurrentTimeLabel</source>
+        <target>CurrentTimeLabel</target>
+        <note>Class = "UILabel"; text = "CurrentTimeLabel"; ObjectID = "PNJ-GX-feo";</note>
+      </trans-unit>
+      <trans-unit id="PPh-FE-Ieh.normalTitle">
+        <source>Exit</source>
+        <target>Выход</target>
+        <note>Class = "UIButton"; normalTitle = "quit"; ObjectID = "PPh-FE-Ieh";</note>
+      </trans-unit>
+      <trans-unit id="XBV-WX-pZP.normalTitle">
+        <source>Back to game</source>
+        <target>Назад в игру</target>
+        <note>Class = "UIButton"; normalTitle = "Back to game"; ObjectID = "XBV-WX-pZP";</note>
+      </trans-unit>
+      <trans-unit id="cYE-s7-ojo.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "cYE-s7-ojo";</note>
+      </trans-unit>
+      <trans-unit id="jfb-Jc-jEW.text">
+        <source>00 : 00 : 00</source>
+        <target>00 : 00 : 00</target>
+        <note>Class = "UILabel"; text = "00 : 00 : 00"; ObjectID = "jfb-Jc-jEW";</note>
+      </trans-unit>
+      <trans-unit id="mLn-y1-dYs.text">
+        <source>level complete</source>
+        <target>Уровень пройден</target>
+        <note>Class = "UILabel"; text = "level complete"; ObjectID = "mLn-y1-dYs";</note>
+      </trans-unit>
+      <trans-unit id="nn4-Ss-Xxn.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "nn4-Ss-Xxn";</note>
+      </trans-unit>
+      <trans-unit id="xLX-xC-ELP.normalTitle">
+        <source>Restart</source>
+        <target>Сыграть заново</target>
+        <note>Class = "UIButton"; normalTitle = "Play again"; ObjectID = "xLX-xC-ELP";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Cards/Info.plist" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+        <target>Российская версия приложения</target>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Cards/Localizable.strings" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"/>
+    </header>
+    <body>
+      <trans-unit id="Back to game">
+        <source>Back to game</source>
+        <target>Назад в игру</target>
+        <note>Back to game</note>
+      </trans-unit>
+      <trans-unit id="Best time:">
+        <source>Best time:</source>
+        <target>Лучшее время уровня:</target>
+        <note>Best time:</note>
+      </trans-unit>
+      <trans-unit id="Choose level">
+        <source>Level</source>
+        <target>Выбор уровеня</target>
+        <note>Choose level</note>
+      </trans-unit>
+      <trans-unit id="Great!">
+        <source>Great!</source>
+        <target>Великолепно!</target>
+        <note>Great!</note>
+      </trans-unit>
+      <trans-unit id="Level complete">
+        <source>Level complete</source>
+        <target>Уровень пройден</target>
+        <note>Level complete</note>
+      </trans-unit>
+      <trans-unit id="Play again">
+        <source>Restart</source>
+        <target>Сыграть заново</target>
+        <note>Play again</note>
+      </trans-unit>
+      <trans-unit id="Please try again">
+        <source>Please try again</source>
+        <target>Попробуйте еще раз</target>
+        <note>Please try again</note>
+      </trans-unit>
+      <trans-unit id="Quit">
+        <source>Exit</source>
+        <target>Выход</target>
+        <note>Quit</note>
+      </trans-unit>
+      <trans-unit id="Sound">
+        <source>Sound</source>
+        <target>Звук</target>
+        <note>Sound</note>
+      </trans-unit>
+      <trans-unit id="Time of the level:">
+        <source>Time of the level:</source>
+        <target>Время уровня</target>
+        <note>Time of the level:</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

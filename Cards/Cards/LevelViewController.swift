@@ -41,7 +41,7 @@ class LevelViewController: UIViewController  {
         
         
       //  chooseLevelLabel.font = UIFont(name: "EjaRoundFilled", size: 40)
-        chooseLevelLabel.strockedText = "Choose level"
+        chooseLevelLabel.strockedText = NSLocalizedString("Choose level", comment: "Choose level")
     }
 
     override func viewWillAppear(_ animated: Bool) {
