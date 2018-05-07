@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wSc-wi-kfF">
-    <device id="retina4_7" orientation="landscape">
+    <device id="ipad12_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="EjaRoundFilled.ttf">
+            <string>EjaRoundFilled</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Level View Controller-->
         <scene sceneID="2Jc-Mt-AL8">
@@ -18,12 +25,36 @@
                         <viewControllerLayoutGuide type="bottom" id="lOt-yS-E07"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ngL-qE-Unp">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="YI8-SZ-Hyr">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rabbit" translatesAutoresizingMaskIntoConstraints="NO" id="xNV-S1-ISM">
+                                <rect key="frame" x="597" y="0.0" width="50" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rat_left" translatesAutoresizingMaskIntoConstraints="NO" id="5xu-zE-jtc">
+                                <rect key="frame" x="50" y="0.0" width="86" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВЫБРАТЬ УРОВЕНЬ" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jcv-ZA-y9R" customClass="StrokedLabel" customModule="Cards" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="56.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="54"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="40"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="60"/>
+                                </variation>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u1U-Gi-pKg">
-                                <rect key="frame" x="0.0" y="45" width="667" height="330"/>
-                                <color key="backgroundColor" red="0.73929882359999999" green="0.71100361469999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="56.5" width="1366" height="967.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cJ6-97-G2m">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -41,23 +72,38 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J8Z-yh-IQR">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYE-s7-ojo">
-                                                    <rect key="frame" x="27" y="68" width="102" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="I9R-qg-0F2">
-                                                    <rect key="frame" x="21" y="0.0" width="29" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="I9R-qg-0F2">
+                                                    <rect key="frame" x="35" y="0.0" width="15" height="18"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYE-s7-ojo" customClass="StrokedLabel" customModule="Cards" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="21" width="50" height="28.5"/>
+                                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=compact-widthClass=regular">
+                                                        <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="22"/>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular">
+                                                        <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="30"/>
+                                                    </variation>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="cYE-s7-ojo" secondAttribute="trailing" id="8Kv-Em-6Gt"/>
+                                            <constraint firstAttribute="trailing" secondItem="I9R-qg-0F2" secondAttribute="trailing" id="CUd-zR-z4G"/>
+                                            <constraint firstItem="I9R-qg-0F2" firstAttribute="height" secondItem="J8Z-yh-IQR" secondAttribute="height" multiplier="0.35" id="FMO-bU-HW5" userLabel="Lock Image.height = Level Image.height"/>
                                             <constraint firstItem="J8Z-yh-IQR" firstAttribute="centerX" secondItem="3DG-GO-XlP" secondAttribute="centerX" id="OYc-cf-Rnf"/>
                                             <constraint firstItem="J8Z-yh-IQR" firstAttribute="height" secondItem="3DG-GO-XlP" secondAttribute="height" id="WD9-x7-4e2"/>
                                             <constraint firstItem="J8Z-yh-IQR" firstAttribute="centerY" secondItem="3DG-GO-XlP" secondAttribute="centerY" id="YV6-zj-LsL"/>
+                                            <constraint firstItem="I9R-qg-0F2" firstAttribute="top" secondItem="3DG-GO-XlP" secondAttribute="top" id="kI3-K9-EJe"/>
+                                            <constraint firstItem="I9R-qg-0F2" firstAttribute="width" secondItem="J8Z-yh-IQR" secondAttribute="width" multiplier="0.3" id="khZ-wA-Wl0" userLabel="Lock Image.width = Level Image.width"/>
+                                            <constraint firstItem="cYE-s7-ojo" firstAttribute="leading" secondItem="3DG-GO-XlP" secondAttribute="leading" id="nes-Rx-3bl"/>
+                                            <constraint firstItem="cYE-s7-ojo" firstAttribute="top" secondItem="3DG-GO-XlP" secondAttribute="topMargin" constant="2" id="r3I-8a-f7q" userLabel="Best Time Label.top = topMargin">
+                                                <variation key="heightClass=compact-widthClass=compact" constant="2"/>
+                                                <variation key="heightClass=compact-widthClass=regular" constant="6"/>
+                                                <variation key="heightClass=regular-widthClass=regular" constant="13"/>
+                                            </constraint>
                                             <constraint firstItem="J8Z-yh-IQR" firstAttribute="width" secondItem="3DG-GO-XlP" secondAttribute="width" id="rNr-ua-kuI"/>
                                         </constraints>
                                         <connections>
@@ -68,37 +114,30 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбор уровня" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiQ-6F-OfW">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="37"/>
-                                <color key="backgroundColor" red="1" green="0.63880870550000002" blue="0.49848130190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="3Ht-EN-vno" userLabel="height = view.bounds.height/6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uiQ-6F-OfW" firstAttribute="leading" secondItem="ngL-qE-Unp" secondAttribute="leading" id="22v-9E-iQz"/>
-                            <constraint firstAttribute="trailing" secondItem="uiQ-6F-OfW" secondAttribute="trailing" id="9Dh-qq-wtH"/>
-                            <constraint firstItem="lOt-yS-E07" firstAttribute="top" secondItem="u1U-Gi-pKg" secondAttribute="bottom" id="B5g-vV-UXK"/>
-                            <constraint firstItem="uiQ-6F-OfW" firstAttribute="top" secondItem="ngL-qE-Unp" secondAttribute="top" id="P8e-4y-Lf6"/>
-                            <constraint firstItem="u1U-Gi-pKg" firstAttribute="leading" secondItem="ngL-qE-Unp" secondAttribute="leading" id="euJ-ec-xcs"/>
-                            <constraint firstAttribute="trailing" secondItem="u1U-Gi-pKg" secondAttribute="trailing" id="mfQ-iw-aGS"/>
-                            <constraint firstItem="u1U-Gi-pKg" firstAttribute="top" secondItem="uiQ-6F-OfW" secondAttribute="bottom" constant="8" id="rb1-dj-nLc" userLabel="Level Collecton View.top = Choose Level Label.bottom"/>
+                            <constraint firstItem="u1U-Gi-pKg" firstAttribute="leading" secondItem="ngL-qE-Unp" secondAttribute="leading" id="0sN-hu-mqD"/>
+                            <constraint firstAttribute="trailing" secondItem="u1U-Gi-pKg" secondAttribute="trailing" id="3va-Fc-D2h"/>
+                            <constraint firstItem="Jcv-ZA-y9R" firstAttribute="leading" secondItem="ngL-qE-Unp" secondAttribute="leading" id="BRi-EG-XGW"/>
+                            <constraint firstItem="u1U-Gi-pKg" firstAttribute="top" secondItem="Jcv-ZA-y9R" secondAttribute="bottom" id="E8O-sZ-9Oh"/>
+                            <constraint firstItem="lOt-yS-E07" firstAttribute="top" secondItem="u1U-Gi-pKg" secondAttribute="bottom" id="HRr-vD-cPJ"/>
+                            <constraint firstItem="Jcv-ZA-y9R" firstAttribute="top" secondItem="ngL-qE-Unp" secondAttribute="top" id="LdJ-HX-8rC"/>
+                            <constraint firstAttribute="trailing" secondItem="Jcv-ZA-y9R" secondAttribute="trailing" id="ZU1-A3-FEn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PhC-im-wxr"/>
                     <connections>
-                        <outlet property="chooseLevelLabel" destination="uiQ-6F-OfW" id="81p-Ls-eDU"/>
+                        <outlet property="backgroundImage" destination="YI8-SZ-Hyr" id="XZT-6P-Yhc"/>
+                        <outlet property="chooseLevelLabel" destination="Jcv-ZA-y9R" id="2vU-lE-mCL"/>
                         <outlet property="levelCollectonView" destination="u1U-Gi-pKg" id="8Cf-Va-B06"/>
+                        <outlet property="rabbit" destination="xNV-S1-ISM" id="2aR-Rl-fsl"/>
+                        <outlet property="rat_left" destination="5xu-zE-jtc" id="JfX-fn-fu5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zD3-29-BpK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1128.4857571214393" y="4"/>
+            <point key="canvasLocation" x="1066.9106881405562" y="0.5859375"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="JJE-KO-JgU">
@@ -109,50 +148,48 @@
                         <viewControllerLayoutGuide type="bottom" id="dCz-hI-UTG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nGO-1D-EvZ">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="BJc-OZ-Zb8">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7RM-U7-wVo">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="eta-X3-hJv">
-                                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACo-hd-gfJ">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfb-Jc-jEW">
-                                        <rect key="frame" x="248" y="27" width="138" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJE-RX-Mhd">
-                                        <rect key="frame" x="530" y="23" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Меню"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJE-RX-Mhd" customClass="PhantomButton" customModule="Cards" customModuleProvider="target">
+                                        <rect key="frame" x="1169" y="117" width="148" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                                        <state key="normal" title="Меню">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=compact-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="25"/>
+                                        </variation>
                                         <connections>
                                             <action selector="menuButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="0NL-ag-Dhj"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kl-Dk-tvV">
-                                        <rect key="frame" x="572" y="298" width="32" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="eye"/>
-                                        <connections>
-                                            <action selector="hintButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="Hx2-d6-sbK"/>
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6av-eA-ZN6">
                                         <rect key="frame" x="213" y="123" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewLayout key="collectionViewLayout" id="dRf-Pm-Ww9" customClass="CenterAlignedCollectionViewFlowLayout" customModule="Cards" customModuleProvider="target"/>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="c1w-SP-yg7" customClass="CardViewCell" customModule="Cards" customModuleProvider="target">
@@ -165,7 +202,7 @@
                                                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q4t-YZ-9Jx">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="layer" translatesAutoresizingMaskIntoConstraints="NO" id="2eq-yv-Knq">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backSide" translatesAutoresizingMaskIntoConstraints="NO" id="2eq-yv-Knq">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         </imageView>
                                                     </subviews>
@@ -191,17 +228,50 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00 : 00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfb-Jc-jEW" customClass="StrokedLabel" customModule="Cards" customModuleProvider="target">
+                                        <rect key="frame" x="91" y="23" width="299" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="30"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="50"/>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Kl-Dk-tvV" customClass="PhantomButton" customModule="Cards" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="34" width="125" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                                        <state key="normal" title="Подсказка">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="heightClass=compact-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="25"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="hintButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="Hx2-d6-sbK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="addTimeImage" destination="eEs-cQ-faG" id="aN3-ti-kyU"/>
                         <outlet property="addTimeView" destination="1cp-81-oNs" id="Xp9-6i-Tve"/>
+                        <outlet property="backToGameButton" destination="XBV-WX-pZP" id="KhI-WX-sVO"/>
                         <outlet property="cardsCollectionView" destination="6av-eA-ZN6" id="Rf9-63-awd"/>
                         <outlet property="gameContentView" destination="ACo-hd-gfJ" id="1XS-F5-ieK"/>
+                        <outlet property="hintButton" destination="2Kl-Dk-tvV" id="vE9-ZO-FVz"/>
+                        <outlet property="menuButton" destination="GJE-RX-Mhd" id="Ltp-q0-Uf9"/>
                         <outlet property="menuView" destination="bUc-E4-E4w" id="2QW-AN-n3R"/>
+                        <outlet property="playAgainButton" destination="xLX-xC-ELP" id="2IF-pz-df9"/>
+                        <outlet property="quitButton" destination="PPh-FE-Ieh" id="gKX-YY-XeU"/>
+                        <outlet property="soundButton" destination="FJH-in-sb1" id="Ege-fc-5O1"/>
                         <outlet property="timerLabel" destination="jfb-Jc-jEW" id="QZ5-UF-MhA"/>
                         <outlet property="visualEffectView" destination="7RM-U7-wVo" id="cxk-BM-Nk5"/>
                         <segue destination="bTU-PC-SsW" kind="show" identifier="showEndOfGameController" id="xlW-cS-PMq"/>
@@ -209,51 +279,108 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AX-Xa-FOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="1cp-81-oNs">
-                    <rect key="frame" x="0.0" y="0.0" width="138" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="l10" translatesAutoresizingMaskIntoConstraints="NO" id="eEs-cQ-faG">
-                            <rect key="frame" x="0.0" y="0.0" width="138" height="50"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eEs-cQ-faG">
+                            <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="eEs-cQ-faG" firstAttribute="top" secondItem="1cp-81-oNs" secondAttribute="top" id="A2s-WX-lkh"/>
+                        <constraint firstItem="eEs-cQ-faG" firstAttribute="leading" secondItem="1cp-81-oNs" secondAttribute="leading" id="Y28-if-KJg"/>
+                        <constraint firstAttribute="bottom" secondItem="eEs-cQ-faG" secondAttribute="bottom" id="jbZ-Cv-dHU"/>
+                        <constraint firstAttribute="trailing" secondItem="eEs-cQ-faG" secondAttribute="trailing" id="v4A-8n-leA"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" id="bUc-E4-E4w" customClass="DesignableView" customModule="Cards" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="293" height="197"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBV-WX-pZP">
-                            <rect key="frame" x="93" y="20" width="107" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Назад в игру"/>
-                            <connections>
-                                <action selector="backToGameButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="QIM-Kn-Lb8"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLX-xC-ELP">
-                            <rect key="frame" x="84" y="55" width="116" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Сыграть заново"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLX-xC-ELP" customClass="StrokedTextButton" customModule="Cards" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="50" width="293" height="49"/>
+                            <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                            <state key="normal" title="Сыграть заново">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="heightClass=compact-widthClass=regular">
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="30"/>
+                            </variation>
                             <connections>
                                 <action selector="playAgainButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="bzG-3l-6cc"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPh-FE-Ieh">
-                            <rect key="frame" x="130" y="87" width="46" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Выход"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPh-FE-Ieh" customClass="StrokedTextButton" customModule="Cards" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="99" width="293" height="49"/>
+                            <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                            <state key="normal" title="Выход">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="heightClass=compact-widthClass=regular">
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="30"/>
+                            </variation>
                             <connections>
                                 <action selector="backToLevelsButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="IME-Jr-UF5"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJH-in-sb1">
-                            <rect key="frame" x="130" y="125" width="46" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Звук"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJH-in-sb1" customClass="StrokedTextButton" customModule="Cards" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="148" width="293" height="50"/>
+                            <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                            <state key="normal" title="Звук">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="heightClass=compact-widthClass=regular">
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="30"/>
+                            </variation>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBV-WX-pZP" customClass="StrokedTextButton" customModule="Cards" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+                            <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                            <state key="normal" title="Назад в игру">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="heightClass=compact-widthClass=regular">
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="30"/>
+                            </variation>
+                            <connections>
+                                <action selector="backToGameButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="QIM-Kn-Lb8"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.76636773767605637" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="PPh-FE-Ieh" firstAttribute="top" secondItem="xLX-xC-ELP" secondAttribute="bottom" id="90t-Pg-xBi"/>
+                        <constraint firstItem="xLX-xC-ELP" firstAttribute="leading" secondItem="bUc-E4-E4w" secondAttribute="leading" id="Cpl-Zd-P4e"/>
+                        <constraint firstAttribute="trailing" secondItem="FJH-in-sb1" secondAttribute="trailing" id="FoK-PA-G93"/>
+                        <constraint firstItem="FJH-in-sb1" firstAttribute="leading" secondItem="bUc-E4-E4w" secondAttribute="leading" id="GJe-kY-mAU"/>
+                        <constraint firstItem="PPh-FE-Ieh" firstAttribute="leading" secondItem="bUc-E4-E4w" secondAttribute="leading" id="Qg4-Ry-x1y"/>
+                        <constraint firstAttribute="bottom" secondItem="FJH-in-sb1" secondAttribute="bottom" id="Qn0-o6-D9p"/>
+                        <constraint firstItem="XBV-WX-pZP" firstAttribute="top" secondItem="bUc-E4-E4w" secondAttribute="top" id="RJD-pD-ee3"/>
+                        <constraint firstItem="FJH-in-sb1" firstAttribute="top" secondItem="PPh-FE-Ieh" secondAttribute="bottom" id="a2F-RC-kSa"/>
+                        <constraint firstAttribute="trailing" secondItem="XBV-WX-pZP" secondAttribute="trailing" id="fRq-PK-S9y"/>
+                        <constraint firstItem="XBV-WX-pZP" firstAttribute="height" secondItem="bUc-E4-E4w" secondAttribute="height" multiplier="0.25" id="fcm-eV-N9C"/>
+                        <constraint firstAttribute="trailing" secondItem="PPh-FE-Ieh" secondAttribute="trailing" id="giZ-T6-oaI"/>
+                        <constraint firstAttribute="trailing" secondItem="xLX-xC-ELP" secondAttribute="trailing" id="gsF-9a-NW6"/>
+                        <constraint firstItem="xLX-xC-ELP" firstAttribute="height" secondItem="bUc-E4-E4w" secondAttribute="height" multiplier="0.25" id="iN4-cy-ymS"/>
+                        <constraint firstItem="xLX-xC-ELP" firstAttribute="top" secondItem="XBV-WX-pZP" secondAttribute="bottom" id="kdT-qg-1jT"/>
+                        <constraint firstItem="FJH-in-sb1" firstAttribute="height" secondItem="bUc-E4-E4w" secondAttribute="height" multiplier="0.25" id="neY-zi-DGE"/>
+                        <constraint firstItem="PPh-FE-Ieh" firstAttribute="height" secondItem="bUc-E4-E4w" secondAttribute="height" multiplier="0.25" id="tQP-iI-jGU"/>
+                        <constraint firstItem="XBV-WX-pZP" firstAttribute="leading" secondItem="bUc-E4-E4w" secondAttribute="leading" id="wak-gZ-NOo"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="15"/>
@@ -261,7 +388,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1820.2398800599701" y="4"/>
+            <point key="canvasLocation" x="1817.130307467057" y="0.0"/>
         </scene>
         <!--End Of Game Controller-->
         <scene sceneID="Bt4-Jr-e3i">
@@ -272,38 +399,84 @@
                         <viewControllerLayoutGuide type="bottom" id="5pr-wX-8tp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZkV-p6-cBg">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BestTimeLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtE-cd-o5a">
-                                <rect key="frame" x="166" y="177" width="314" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="2Vt-2e-A67">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="УРОВЕНЬ ОКОНЧЕН" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mLn-y1-dYs" customClass="StrokedLabel" customModule="Cards" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="10" width="1366" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="45"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="35"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="50"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BestTimeLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GtE-cd-o5a" customClass="StrokedLabel" customModule="Cards" customModuleProvider="target">
+                                <rect key="frame" x="171" y="190" width="314" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="35"/>
+                                </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8l-II-xHn">
-                                <rect key="frame" x="300" y="257" width="57" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CurrentTimeLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNJ-GX-feo" customClass="StrokedLabel" customModule="Cards" customModuleProvider="target">
+                                <rect key="frame" x="171" y="162" width="314" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Вперед"/>
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="35"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8l-II-xHn" customClass="PhantomButton" customModule="Cards" customModuleProvider="target">
+                                <rect key="frame" x="283" y="315" width="104" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="20"/>
+                                <state key="normal" title="Вперед">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="goToNextLevelButton:" destination="bTU-PC-SsW" eventType="touchUpInside" id="Ug9-OC-sLs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nn4-Ss-Xxn">
-                                <rect key="frame" x="132" y="90" width="377" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nn4-Ss-Xxn" customClass="StrokedLabel" customModule="Cards" customModuleProvider="target">
+                                <rect key="frame" x="129" y="81" width="412" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="60"/>
+                                </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CurrentTimeLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNJ-GX-feo">
-                                <rect key="frame" x="171" y="148" width="314" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lezard" translatesAutoresizingMaskIntoConstraints="NO" id="tca-0L-KON">
+                                <rect key="frame" x="1046" y="162" width="320" height="772"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lezard" translatesAutoresizingMaskIntoConstraints="NO" id="VJe-HF-0xf">
+                                <rect key="frame" x="67" y="162" width="320" height="772"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -311,18 +484,22 @@
                         <outlet property="bestTimeLabel" destination="GtE-cd-o5a" id="DrG-Nt-ReZ"/>
                         <outlet property="currentTimeLabel" destination="PNJ-GX-feo" id="6yP-sx-ZhU"/>
                         <outlet property="evaluationLabel" destination="nn4-Ss-Xxn" id="OXD-yX-gLn"/>
+                        <outlet property="goToNextLevelButton" destination="C8l-II-xHn" id="V8p-Hi-Cb9"/>
+                        <outlet property="levelCompleteLabel" destination="mLn-y1-dYs" id="19m-9r-xfi"/>
+                        <outlet property="lezardImageView1" destination="VJe-HF-0xf" id="Rex-9Z-v4Z"/>
+                        <outlet property="lezardImageView2" destination="tca-0L-KON" id="xlc-PI-7FI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSS-8x-R09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2475.1124437781114" y="4"/>
+            <point key="canvasLocation" x="2505.4172767203513" y="29.296874999999996"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aNb-uh-edb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="wSc-wi-kfF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXp-Xd-lm7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MXp-Xd-lm7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -337,9 +514,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="eye" width="32" height="32"/>
-        <image name="l10" width="32" height="32"/>
-        <image name="layer" width="32" height="32"/>
-        <image name="lock" width="16" height="16"/>
+        <image name="Lezard" width="89" height="172"/>
+        <image name="backSide" width="350" height="350"/>
+        <image name="background" width="1136" height="636"/>
+        <image name="lock" width="40" height="53"/>
+        <image name="rabbit" width="72" height="72"/>
+        <image name="rat_left" width="126" height="126"/>
     </resources>
 </document>

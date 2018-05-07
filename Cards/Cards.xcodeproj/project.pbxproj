@@ -13,7 +13,9 @@
 		840B7CE1204C2FA7009BE583 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CE0204C2FA7009BE583 /* Level.swift */; };
 		840B7CE3204C3221009BE583 /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B7CE2204C3221009BE583 /* LevelViewCell.swift */; };
 		840CBFD120584C2B007D9033 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840CBFD020584C2B007D9033 /* GameSettings.swift */; };
+		840CC018207694C900CC4801 /* EjaRound.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840CC017207694C900CC4801 /* EjaRound.ttf */; };
 		840DDD10202C9AB700094903 /* ArrayExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DDD0F202C9AB700094903 /* ArrayExtention.swift */; };
+		840E24222077E3AA005A593C /* PhantomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E24212077E3AA005A593C /* PhantomButton.swift */; };
 		840FA313201F0F8A007B4958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA312201F0F8A007B4958 /* AppDelegate.swift */; };
 		840FA315201F0F8A007B4958 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FA314201F0F8A007B4958 /* GameViewController.swift */; };
 		840FA318201F0F8A007B4958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840FA316201F0F8A007B4958 /* Main.storyboard */; };
@@ -24,7 +26,9 @@
 		841790FF205050B90002582D /* EndOfGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841790FE205050B90002582D /* EndOfGameController.swift */; };
 		843F280D20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F280C20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift */; };
 		8447AE61203C8772006A9C30 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447AE60203C8772006A9C30 /* DesignableView.swift */; };
-		8450BCB82063B542009C9716 /* LevelsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450BCB72063B542009C9716 /* LevelsLayout.swift */; };
+		845405BD2091D1B1005413C3 /* EjaRoundFilled.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 845405BC2091D1B1005413C3 /* EjaRoundFilled.ttf */; };
+		845DB365207F55B300850D95 /* StrokedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB364207F55B300850D95 /* StrokedLabel.swift */; };
+		845DB367207FA91B00850D95 /* StrokedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB366207FA91B00850D95 /* StrokedTextButton.swift */; };
 		8466F1862034B9E300C4D351 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F1852034B9E300C4D351 /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +39,10 @@
 		840B7CE0204C2FA7009BE583 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		840B7CE2204C3221009BE583 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
 		840CBFD020584C2B007D9033 /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		840CC017207694C900CC4801 /* EjaRound.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EjaRound.ttf; sourceTree = "<group>"; };
+		840D82A420643C6A002F3363 /* AdverGothic Ho.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AdverGothic Ho.ttf"; sourceTree = "<group>"; };
 		840DDD0F202C9AB700094903 /* ArrayExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtention.swift; sourceTree = "<group>"; };
+		840E24212077E3AA005A593C /* PhantomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhantomButton.swift; sourceTree = "<group>"; };
 		840FA30F201F0F8A007B4958 /* Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		840FA312201F0F8A007B4958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		840FA314201F0F8A007B4958 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +55,9 @@
 		841790FE205050B90002582D /* EndOfGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndOfGameController.swift; sourceTree = "<group>"; };
 		843F280C20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		8447AE60203C8772006A9C30 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
-		8450BCB72063B542009C9716 /* LevelsLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsLayout.swift; sourceTree = "<group>"; };
+		845405BC2091D1B1005413C3 /* EjaRoundFilled.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EjaRoundFilled.ttf; sourceTree = "<group>"; };
+		845DB364207F55B300850D95 /* StrokedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokedLabel.swift; sourceTree = "<group>"; };
+		845DB366207FA91B00850D95 /* StrokedTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokedTextButton.swift; sourceTree = "<group>"; };
 		8466F1852034B9E300C4D351 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +93,7 @@
 			children = (
 				840FA312201F0F8A007B4958 /* AppDelegate.swift */,
 				841790FE205050B90002582D /* EndOfGameController.swift */,
+				840D82A420643C6A002F3363 /* AdverGothic Ho.ttf */,
 				840FA314201F0F8A007B4958 /* GameViewController.swift */,
 				840953BD205AF55B004D822A /* LevelsManager.swift */,
 				8466F1852034B9E300C4D351 /* Game.swift */,
@@ -91,10 +101,14 @@
 				840B7CE0204C2FA7009BE583 /* Level.swift */,
 				840B7CE2204C3221009BE583 /* LevelViewCell.swift */,
 				840CBFD020584C2B007D9033 /* GameSettings.swift */,
+				840CC017207694C900CC4801 /* EjaRound.ttf */,
 				840FA316201F0F8A007B4958 /* Main.storyboard */,
-				8450BCB72063B542009C9716 /* LevelsLayout.swift */,
+				845405BC2091D1B1005413C3 /* EjaRoundFilled.ttf */,
 				8407AA8120602635002BB720 /* TimeIntervalExtantion.swift */,
 				8447AE60203C8772006A9C30 /* DesignableView.swift */,
+				840E24212077E3AA005A593C /* PhantomButton.swift */,
+				845DB364207F55B300850D95 /* StrokedLabel.swift */,
+				845DB366207FA91B00850D95 /* StrokedTextButton.swift */,
 				840DDD0F202C9AB700094903 /* ArrayExtention.swift */,
 				840FA319201F0F8A007B4958 /* Assets.xcassets */,
 				840FA31B201F0F8A007B4958 /* LaunchScreen.storyboard */,
@@ -165,9 +179,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840CC018207694C900CC4801 /* EjaRound.ttf in Resources */,
 				840FA31D201F0F8A007B4958 /* LaunchScreen.storyboard in Resources */,
 				840FA31A201F0F8A007B4958 /* Assets.xcassets in Resources */,
 				840FA318201F0F8A007B4958 /* Main.storyboard in Resources */,
+				845405BD2091D1B1005413C3 /* EjaRoundFilled.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,8 +199,9 @@
 				840CBFD120584C2B007D9033 /* GameSettings.swift in Sources */,
 				841790FF205050B90002582D /* EndOfGameController.swift in Sources */,
 				840953BE205AF55B004D822A /* LevelsManager.swift in Sources */,
+				845DB365207F55B300850D95 /* StrokedLabel.swift in Sources */,
 				840B7CDF204C2F5A009BE583 /* LevelViewController.swift in Sources */,
-				8450BCB82063B542009C9716 /* LevelsLayout.swift in Sources */,
+				845DB367207FA91B00850D95 /* StrokedTextButton.swift in Sources */,
 				840FA325201F1403007B4958 /* Card.swift in Sources */,
 				840B7CE3204C3221009BE583 /* LevelViewCell.swift in Sources */,
 				843F280D20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -194,6 +211,7 @@
 				840DDD10202C9AB700094903 /* ArrayExtention.swift in Sources */,
 				8447AE61203C8772006A9C30 /* DesignableView.swift in Sources */,
 				840FA313201F0F8A007B4958 /* AppDelegate.swift in Sources */,
+				840E24222077E3AA005A593C /* PhantomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

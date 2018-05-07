@@ -10,8 +10,11 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var timerLabel: StrokedLabel!
+    @IBOutlet weak var hintButton: UIButton!
+    @IBOutlet weak var menuButton: PhantomButton!
 
+    @IBOutlet weak var addTimeImage: UIImageView!
     
     var timer = Timer()
     var isTimerRunning = false
@@ -25,7 +28,10 @@ class GameViewController: UIViewController {
     @IBOutlet var menuView: UIView!
     @IBOutlet var addTimeView: UIView!
     
-    
+    @IBOutlet weak var backToGameButton: StrokedTextButton!
+    @IBOutlet weak var playAgainButton: StrokedTextButton!
+    @IBOutlet weak var quitButton: StrokedTextButton!
+    @IBOutlet weak var soundButton: StrokedTextButton!
     
     var effect: UIVisualEffect!
     let reuseIdentifier = "cardCell"
@@ -60,26 +66,33 @@ class GameViewController: UIViewController {
        }
     
     @IBAction func backToGameButton(_ sender: UIButton) {
+        endHintTime = Date()
+        let hintTimeInterval = self.endHintTime!.timeIntervalSince(self.startHintTime!)
+        game.startGameTime = self.game.startGameTime?.addingTimeInterval(hintTimeInterval)
+        timerLabel.strockedText = self.game.elapsedTime?.textDescription as! String
+    
         runTimer()
-        animateOut()
+        animateOut(playAgain: false)
     }
     
     @IBAction func playAgainButton(_ sender: UIButton) {
         game.finishGame()
         game.startNewGame()
-        animateOut()
+        animateOut(playAgain: true)
     }
 
 
     @IBAction func hintButton(_ sender: UIButton) {
         timer.invalidate()
         startHintTime = Date()
+        hintButton.isEnabled = false
         flipOverAllHiddenCards(isPenalty: true)
     }
     
     
     @IBAction func menuButton(_ sender: UIButton) {
         timer.invalidate()
+        startHintTime = Date()
         animateIn()
     }
 
@@ -90,12 +103,14 @@ class GameViewController: UIViewController {
         cardsCollectionView.dataSource = self
         game.delegate = self
         
-        cardsCollectionView.backgroundColor = UIColor.green
         
         effect = visualEffectView.effect
         visualEffectView.effect = nil
        
         layout = cardsCollectionView.collectionViewLayout as? CenterAlignedCollectionViewFlowLayout
+        
+
+        //menuButton.setCustomAttributedTitle(title: "Меню", fontSize: 30)
         //layout?.level = game.level
     }
     
@@ -105,6 +120,52 @@ class GameViewController: UIViewController {
         layout?.boundWidth = self.view.bounds.width
         layout?.boundHeight = self.view.bounds.height
         
+        cardsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        cardsCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        cardsCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        cardsCollectionView.widthAnchor.constraint(equalToConstant: (layout?.widthConstant)!).isActive = true
+        cardsCollectionView.heightAnchor.constraint(equalToConstant: (layout?.heightConstant)!).isActive = true
+        
+        timerLabel.translatesAutoresizingMaskIntoConstraints = false
+        timerLabel.centerXAnchor.constraint(equalTo: cardsCollectionView.centerXAnchor, constant: 0).isActive = true
+        let yOffset = self.view.bounds.height/12
+        timerLabel.centerYAnchor.constraint(equalTo: view.topAnchor, constant: yOffset).isActive = true
+        timerLabel.widthAnchor.constraint(equalToConstant: 270).isActive = true
+        timerLabel.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        
+        view.layoutIfNeeded()
+        
+        
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
+        menuButton.centerYAnchor.constraint(equalTo: timerLabel.centerYAnchor, constant: 0).isActive = true
+        let xOffset: CGFloat = (self.view.bounds.maxX - (self.view.bounds.midX + timerLabel.bounds.midX)) / 2
+        menuButton.centerXAnchor.constraint(equalTo: timerLabel.trailingAnchor, constant: xOffset).isActive = true
+        
+        
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            menuButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+            menuButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        case .phone:
+            menuButton.widthAnchor.constraint(equalToConstant: 140).isActive = true
+            menuButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        default: break;
+        }
+        
+        hintButton.translatesAutoresizingMaskIntoConstraints = false
+        hintButton.centerYAnchor.constraint(equalTo: timerLabel.centerYAnchor, constant: 0).isActive = true
+        hintButton.centerXAnchor.constraint(equalTo: view.leadingAnchor, constant: xOffset).isActive = true
+        
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            hintButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+            hintButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        case .phone:
+            hintButton.widthAnchor.constraint(equalToConstant: 140).isActive = true
+            hintButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        default: break;
+        }
+        
         game.startNewGame()
     }
 
@@ -113,16 +174,9 @@ class GameViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        cardsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        let horizontalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+        //отсюда перенесены ограничения
+
         
-        let widthConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (layout?.widthConstant)!)
-        
-        let heightConstraint = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (layout?.heightConstant)!)
-        
-        view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
-        cardsCollectionView.backgroundColor = UIColor.green
     }
     
     override func didReceiveMemoryWarning() {
@@ -144,7 +198,6 @@ class GameViewController: UIViewController {
     
     func flipOverAllHiddenCards(isPenalty addTime: Bool, completion: (() -> ())? = nil) {
         
-    
         let faceDownCards = getFaceDownCards()
         cardsCollectionView.isUserInteractionEnabled = false
         CATransaction.begin()
@@ -165,6 +218,7 @@ class GameViewController: UIViewController {
                     self.runTimer()
                 }
                 self.cardsCollectionView.isUserInteractionEnabled = true
+                self.hintButton.isEnabled = true
             })
             
             faceDownCards.forEach { cell in
@@ -199,7 +253,7 @@ class GameViewController: UIViewController {
     }
     
     func updateTimer(){
-        timerLabel.text = game.elapsedTime?.textDescription
+        timerLabel.strockedText = game.elapsedTime?.textDescription as! String
     }
     
 
@@ -214,8 +268,12 @@ class GameViewController: UIViewController {
     
     func animateAddTimeView(){
         self.view.addSubview(addTimeView)
-        addTimeView.center = timerLabel.center
+        addTimeView.center = CGPoint(x: timerLabel.center.x + timerLabel.frame.width/2 + 20, y: timerLabel.center.y)
         
+        let text: NSString = "+30"
+        let newImage = textToImage(text: text, atPoint: CGPoint(x: 0, y: 0))
+        addTimeImage.image = newImage
+
         addTimeView.transform =  CGAffineTransform(scaleX: 0.5, y: 0.5)    //.identity
 
 
@@ -226,12 +284,37 @@ class GameViewController: UIViewController {
                 self.endHintTime = Date()
                 let hintTimeInterval = self.endHintTime!.timeIntervalSince(self.startHintTime!)
                 self.game.startGameTime = self.game.startGameTime?.addingTimeInterval(-30 + hintTimeInterval)
-                self.timerLabel.text = self.game.elapsedTime?.textDescription
+                self.timerLabel.strockedText = self.game.elapsedTime?.textDescription as! String
                 self.runTimer()
                 self.addTimeView.removeFromSuperview()
+                self.hintButton.isEnabled = true
             })
             
         }
+    }
+    
+    func textToImage(text: NSString, atPoint point: CGPoint) -> UIImage {
+        let textColor = UIColor.white
+        let textFont = UIFont(name: "EjaRoundFilled", size: 40)
+        let scale = UIScreen.main.scale
+        let backgroundColor = UIColor.clear
+
+        let addViewImageSize = CGSize(width: 138, height: 40)
+        UIGraphicsBeginImageContextWithOptions(addViewImageSize, false, scale)
+        
+        let textFontAttributes = [
+            NSFontAttributeName: textFont!,
+            NSForegroundColorAttributeName: textColor,
+            NSBackgroundColorAttributeName: backgroundColor
+            ] as [String: Any]
+
+        let rect = CGRect(origin: point, size: addViewImageSize)
+        text.draw(in: rect, withAttributes: textFontAttributes)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndPDFContext()
+        
+        return newImage!
     }
 }
 
@@ -273,13 +356,14 @@ extension GameViewController: CardsGame {
     func gameDidStart() {
         cardsCollectionView.reloadData()
         timer.invalidate()
+        hintButton.isEnabled = false
         game.startGameTime = nil
-        timerLabel.text = "00 : 00 : 00"
+        timerLabel.strockedText = "00 : 00 : 00"
     }
     
     func gameDidEnd(){
         timer.invalidate()
-       // guard game.elapsedTime != nil else { return }
+        hintButton.isEnabled = false
         game.endGameTime = game.elapsedTime
     }
   
@@ -317,8 +401,34 @@ extension GameViewController {
 
     func animateIn(){
         self.view.bringSubview(toFront: visualEffectView)
+        
+
+        menuView.frame.size = CGSize(width: view.bounds.width*0.5, height: view.bounds.height*0.5)
         self.view.addSubview(menuView)
         menuView.center = self.view.center
+    
+//        backToGameButton.setCustomAttributedTitle(title: "Назад в игру", fontSize: 50)
+//        playAgainButton.setCustomAttributedTitle(title: "Сыграть заново", fontSize: 50)
+//        quitButton.setCustomAttributedTitle(title: "Выход", fontSize: 50)
+//        soundButton.setCustomAttributedTitle(title: "Звук", fontSize: 50)
+        
+        switch UIDevice.current.userInterfaceIdiom{
+        case .pad:
+
+            backToGameButton.setCustomAttributedTitle(title: "Назад в игру", fontSize: 50)
+            playAgainButton.setCustomAttributedTitle(title: "Сыграть заново", fontSize: 50)
+            quitButton.setCustomAttributedTitle(title: "Выход", fontSize: 50)
+            soundButton.setCustomAttributedTitle(title: "Звук", fontSize: 50)
+        case .phone:
+
+            backToGameButton.setCustomAttributedTitle(title: "Назад в игру", fontSize: 30)
+            playAgainButton.setCustomAttributedTitle(title: "Сыграть заново", fontSize: 30)
+            quitButton.setCustomAttributedTitle(title: "Выход", fontSize: 30)
+            soundButton.setCustomAttributedTitle(title: "Звук", fontSize: 30)
+        default: break;
+        }
+        
+       
         menuView.alpha = 0
         
         UIView.animate(withDuration: 0.4) {
@@ -327,7 +437,7 @@ extension GameViewController {
         }
     }
     
-    func animateOut(){
+    func animateOut(playAgain again: Bool){
         self.view.sendSubview(toBack: visualEffectView)
         UIView.animate(withDuration: 0.2, animations: {
             
@@ -335,7 +445,9 @@ extension GameViewController {
             self.visualEffectView.effect = nil
         }) { (success: Bool) in
             self.menuView.removeFromSuperview()
-            self.flipOverAllHiddenCards(isPenalty: false)
+            if again {
+                self.flipOverAllHiddenCards(isPenalty: false)
+            }
         }
     }
 }
@@ -378,4 +490,21 @@ func flipOverAllHiddenCards(){
  }
  */
 
+//        let cardsCollectionViewXPosition = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+//        let cardsCollectionViewYPosition = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+//        let cardsCollectionViewWidth = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (layout?.widthConstant)!)
+//        let cardsCollectionViewHeight = NSLayoutConstraint(item: cardsCollectionView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: (layout?.heightConstant)!)
 
+//        let timerLabelXPosition = timerLabel.centerXAnchor.constraint(equalTo: self.cardsCollectionView.centerXAnchor)
+//        let timerLabelYPosition = NSLayoutConstraint(item: timerLabel, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: self.view.bounds.height/12)
+//        let timerLabelWidth = NSLayoutConstraint(item: timerLabel, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 270)
+//        let timerLabelHeight = NSLayoutConstraint(item: timerLabel, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 54)
+
+//   view.addConstraints([
+//       cardsCollectionViewXPosition, cardsCollectionViewYPosition, cardsCollectionViewWidth, cardsCollectionViewHeight//,
+// timerLabelXPosition, timerLabelYPosition, timerLabelWidth, timerLabelHeight
+//     ])
+
+/*
+ чтоб сделать векторную графику - single scale + template image
+ */

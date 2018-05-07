@@ -13,5 +13,5 @@ class LevelViewCell: UICollectionViewCell {
     @IBOutlet weak var levelImage: UIImageView!
     @IBOutlet weak var lockImage: UIImageView!
     
-    @IBOutlet weak var bestTimeLabel: UILabel!
+    @IBOutlet weak var bestTimeLabel: StrokedLabel!
 }

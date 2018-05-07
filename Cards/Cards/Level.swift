@@ -13,6 +13,7 @@ class Level: NSObject, NSCoding {
     var number: Int
     var image: UIImage
     var bestTime: TimeInterval? //TimeInterval     // in seconds
+    var isLocked: Bool
     
     let levelImageNames: [Int: String] = [
         1: "l1",
@@ -27,28 +28,31 @@ class Level: NSObject, NSCoding {
         10: "l10"
     ]
     
-    init(number: Int, bestTime: TimeInterval? = nil) {
+    init(number: Int, bestTime: TimeInterval? = nil, isLocked: Bool = true) {
         self.number = number
         self.image = UIImage(named: levelImageNames[number]!)!
         self.bestTime = bestTime
+        self.isLocked = isLocked
     }
     
     required  convenience init?(coder decoder: NSCoder) {
         let number = decoder.decodeInt64(forKey: "number")
         let bestTime = decoder.decodeObject(forKey: "bestTime") as? TimeInterval
+        let isLocked = decoder.decodeBool(forKey: "isLocked")
 
         
         self.init(
             number: Int(number),
-            bestTime: bestTime 
+            bestTime: bestTime,
+            isLocked: Bool(isLocked)
         )
     }
     
     func encode(with coder: NSCoder) {
         coder.encode(self.number, forKey: "number")
         coder.encode(self.bestTime, forKey: "bestTime")
+        coder.encode(self.isLocked, forKey: "isLocked")
     }
-    
     
     lazy var currentGame: Game = Game(level: self.number)
     
