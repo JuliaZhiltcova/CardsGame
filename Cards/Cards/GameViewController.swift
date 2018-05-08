@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameViewController: UIViewController {
 
@@ -80,13 +81,18 @@ class GameViewController: UIViewController {
         game.startNewGame()
         animateOut(playAgain: true)
     }
+    
+    
+    @IBAction func soundButton(_ sender: UIButton) {
+        Sounds.pauseContinuePlaying()
+    }
 
 
     @IBAction func hintButton(_ sender: UIButton) {
         timer.invalidate()
         startHintTime = Date()
         hintButton.isEnabled = false
-        flipOverAllHiddenCards(isPenalty: true)
+        flipOverAllHiddenCards(showTime: TimeInterval(game.level), isPenalty: true)
     }
     
     
@@ -109,7 +115,7 @@ class GameViewController: UIViewController {
        
         layout = cardsCollectionView.collectionViewLayout as? CenterAlignedCollectionViewFlowLayout
         
-
+        
         //menuButton.setCustomAttributedTitle(title: "Меню", fontSize: 30)
         //layout?.level = game.level
     }
@@ -170,7 +176,7 @@ class GameViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        flipOverAllHiddenCards(isPenalty: false)
+        flipOverAllHiddenCards(showTime: TimeInterval(game.level), isPenalty: false)
     }
     
     override func viewWillLayoutSubviews() {
@@ -196,7 +202,7 @@ class GameViewController: UIViewController {
     }
 
     
-    func flipOverAllHiddenCards(isPenalty addTime: Bool, completion: (() -> ())? = nil) {
+    func flipOverAllHiddenCards(showTime: TimeInterval, isPenalty addTime: Bool, completion: (() -> ())? = nil) {
         
         let faceDownCards = getFaceDownCards()
         cardsCollectionView.isUserInteractionEnabled = false
@@ -221,21 +227,22 @@ class GameViewController: UIViewController {
                 self.hintButton.isEnabled = true
             })
             
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + showTime) {
             faceDownCards.forEach { cell in
                 cell.prepareFlipToBackAnimation()
             }
             
             CATransaction.commit()
-            
+            }
         })
         
-        faceDownCards.forEach { cell in
-            cell.prepareFlipToFaceAnimation()
-        }
-        
-        
+            faceDownCards.forEach { cell in
+                cell.prepareFlipToFaceAnimation()
+            }
+    
         CATransaction.commit()
-     
+    
     }
     
     func getFaceDownCards() -> [CardViewCell]{
@@ -370,6 +377,9 @@ extension GameViewController: CardsGame {
     
     func goToNextLevel(){
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { 
+            AudioServicesPlaySystemSound(Sounds.completeLevelSound)
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "endOfGameVC") as! EndOfGameController
             
@@ -391,9 +401,10 @@ extension GameViewController: CardsGame {
             UserDefaults.standard.set(encodedData, forKey: "levels")
             UserDefaults.standard.synchronize()
             
+            
             self.navigationController?.pushViewController(vc, animated: true)
         }
-
+        
     }
 }
 
@@ -446,7 +457,7 @@ extension GameViewController {
         }) { (success: Bool) in
             self.menuView.removeFromSuperview()
             if again {
-                self.flipOverAllHiddenCards(isPenalty: false)
+                self.flipOverAllHiddenCards(showTime: TimeInterval(self.game.level), isPenalty: false)
             }
         }
     }

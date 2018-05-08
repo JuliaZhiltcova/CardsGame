@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 private let reuseIdentifier = "Cell"
 
@@ -42,6 +43,8 @@ class LevelViewController: UIViewController  {
         
       //  chooseLevelLabel.font = UIFont(name: "EjaRoundFilled", size: 40)
         chooseLevelLabel.strockedText = NSLocalizedString("Choose level", comment: "Choose level")
+        Sounds.playBackGroundMusic(fileNamed: "Melody.mp3")
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -31,6 +31,9 @@
 		845405BD2091D1B1005413C3 /* EjaRoundFilled.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 845405BC2091D1B1005413C3 /* EjaRoundFilled.ttf */; };
 		845DB365207F55B300850D95 /* StrokedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB364207F55B300850D95 /* StrokedLabel.swift */; };
 		845DB367207FA91B00850D95 /* StrokedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB366207FA91B00850D95 /* StrokedTextButton.swift */; };
+		8461BAF220A1E6A30058BB27 /* Melody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8461BAF120A1E6A30058BB27 /* Melody.mp3 */; };
+		8461BAF420A1E7110058BB27 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BAF320A1E7110058BB27 /* Sounds.swift */; };
+		8461BAF620A1ECFB0058BB27 /* Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8461BAF520A1ECFB0058BB27 /* Sound.mp3 */; };
 		8466F1862034B9E300C4D351 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466F1852034B9E300C4D351 /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,9 @@
 		845405BC2091D1B1005413C3 /* EjaRoundFilled.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EjaRoundFilled.ttf; sourceTree = "<group>"; };
 		845DB364207F55B300850D95 /* StrokedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokedLabel.swift; sourceTree = "<group>"; };
 		845DB366207FA91B00850D95 /* StrokedTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokedTextButton.swift; sourceTree = "<group>"; };
+		8461BAF120A1E6A30058BB27 /* Melody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Melody.mp3; sourceTree = "<group>"; };
+		8461BAF320A1E7110058BB27 /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		8461BAF520A1ECFB0058BB27 /* Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sound.mp3; sourceTree = "<group>"; };
 		8466F1852034B9E300C4D351 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +110,10 @@
 				840D82A420643C6A002F3363 /* AdverGothic Ho.ttf */,
 				840FA314201F0F8A007B4958 /* GameViewController.swift */,
 				840953BD205AF55B004D822A /* LevelsManager.swift */,
+				8461BAF520A1ECFB0058BB27 /* Sound.mp3 */,
 				8466F1852034B9E300C4D351 /* Game.swift */,
+				8461BAF320A1E7110058BB27 /* Sounds.swift */,
+				8461BAF120A1E6A30058BB27 /* Melody.mp3 */,
 				840B7CDE204C2F5A009BE583 /* LevelViewController.swift */,
 				840B7CE0204C2FA7009BE583 /* Level.swift */,
 				840B7CE2204C3221009BE583 /* LevelViewCell.swift */,
@@ -190,10 +199,12 @@
 				840CC018207694C900CC4801 /* EjaRound.ttf in Resources */,
 				84140BE820A0D6AF003C4990 /* InfoPlist.strings in Resources */,
 				840FA31D201F0F8A007B4958 /* LaunchScreen.storyboard in Resources */,
+				8461BAF220A1E6A30058BB27 /* Melody.mp3 in Resources */,
 				84140BED20A0D6AF003C4990 /* Localizable.strings in Resources */,
 				840FA31A201F0F8A007B4958 /* Assets.xcassets in Resources */,
 				840FA318201F0F8A007B4958 /* Main.storyboard in Resources */,
 				845405BD2091D1B1005413C3 /* EjaRoundFilled.ttf in Resources */,
+				8461BAF620A1ECFB0058BB27 /* Sound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +226,7 @@
 				840FA325201F1403007B4958 /* Card.swift in Sources */,
 				840B7CE3204C3221009BE583 /* LevelViewCell.swift in Sources */,
 				843F280D20207B2C00558CE9 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
+				8461BAF420A1E7110058BB27 /* Sounds.swift in Sources */,
 				840FA327201F1835007B4958 /* CardViewCell.swift in Sources */,
 				8466F1862034B9E300C4D351 /* Game.swift in Sources */,
 				8407AA8220602635002BB720 /* TimeIntervalExtantion.swift in Sources */,
@@ -289,6 +301,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_ACTIVITY_MODE = Disable;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -340,6 +353,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_ACTIVITY_MODE = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

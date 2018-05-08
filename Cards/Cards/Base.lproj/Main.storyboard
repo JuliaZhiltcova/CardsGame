@@ -343,6 +343,9 @@
                             <variation key="heightClass=regular-widthClass=regular">
                                 <fontDescription key="fontDescription" name="EjaRoundFilled" family="EjaRoundFilled" pointSize="30"/>
                             </variation>
+                            <connections>
+                                <action selector="soundButton:" destination="xFt-R6-0Eh" eventType="touchUpInside" id="03a-m0-nBQ"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBV-WX-pZP" customClass="StrokedTextButton" customModule="Cards" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
