@@ -139,8 +139,8 @@ class GameViewController: UIViewController {
         timerLabel.widthAnchor.constraint(equalToConstant: 270).isActive = true
         timerLabel.heightAnchor.constraint(equalToConstant: 54).isActive = true
         
-        view.layoutIfNeeded()
-        
+        //view.layoutIfNeeded()
+        //view.setNeedsLayout()
         
         menuButton.translatesAutoresizingMaskIntoConstraints = false
         menuButton.centerYAnchor.constraint(equalTo: timerLabel.centerYAnchor, constant: 0).isActive = true
